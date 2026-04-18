@@ -127,6 +127,7 @@
         }
         .edge-pill:hover { background: rgba(125,211,252,0.2); transform: scale(1.05); }
         .citation-card {
+            display: block;
             padding: 0.6rem 0.8rem;
             margin-bottom: 0.4rem;
             background: rgba(255,255,255,0.03);
@@ -134,15 +135,41 @@
             border-radius: 8px;
             font-size: 0.78rem;
             line-height: 1.4;
-            transition: border-color 0.2s;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            cursor: pointer;
         }
-        .citation-card:hover { border-color: rgba(167,139,250,0.3); }
+        .citation-card:hover {
+            border-color: rgba(167,139,250,0.4);
+            background: rgba(167,139,250,0.06);
+            transform: translateX(4px);
+        }
         .citation-pdpn {
             font-family: 'Courier New', monospace;
             font-size: 0.7rem;
             color: #a78bfa;
         }
         .citation-title { color: #ccc; margin-left: 0.4rem; }
+        .citation-arrow { float: right; color: #555; font-size: 0.9rem; }
+        .lang-toggle {
+            display: flex;
+            gap: 0;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+        .lang-btn {
+            padding: 0.35rem 0.7rem;
+            font-size: 0.7rem;
+            cursor: pointer;
+            background: rgba(255,255,255,0.04);
+            color: #888;
+            border: none;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .lang-btn.active { background: rgba(167,139,250,0.2); color: #e0d4fc; }
+        .lang-btn:hover { color: #fff; }
         .close-panel {
             position: absolute;
             top: 1.2rem;
@@ -224,12 +251,16 @@
 <body>
 
 <div class="app-header">
-    <div class="logo">AXIS·NAVIGATOR <small>Concept Cosmos v0.1</small></div>
+    <div class="logo">AXIS·NAVIGATOR <small>Concept Cosmos v0.2</small></div>
     <div class="path-tabs">
         <button class="path-tab" data-path="none" onclick="selectPath('none')">Free Explore</button>
         <button class="path-tab" data-path="BEGINNER_PATH" onclick="selectPath('BEGINNER_PATH')">🟢 Beginner</button>
         <button class="path-tab" data-path="DEPENDENT_ORIGINATION_PATH" onclick="selectPath('DEPENDENT_ORIGINATION_PATH')">🟡 Intermediate</button>
         <button class="path-tab" data-path="LIBERATION_PATH" onclick="selectPath('LIBERATION_PATH')">🔴 Advanced</button>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
+            <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">🇧🇷 PT</button>
+        </div>
     </div>
 </div>
 
@@ -241,11 +272,11 @@
     <div class="concept-pali" id="panel-pali"></div>
     <span class="concept-type" id="panel-type"></span>
     <div class="panel-section">
-        <h3>Connected Concepts</h3>
+        <h3 id="lbl-connected">Connected Concepts</h3>
         <div id="panel-edges"></div>
     </div>
     <div class="panel-section">
-        <h3>Canonical Citations (CSL)</h3>
+        <h3 id="lbl-citations">Read on AXIS-NIDDHI ↗</h3>
         <div id="panel-citations"></div>
     </div>
 </div>
@@ -285,6 +316,10 @@ const typeColors = {
     attainment:            { fill: "#fbbf24", glow: "rgba(251,191,36,%a%)" },
     mental_factor:         { fill: "#f87171", glow: "rgba(248,113,113,%a%)" }
 };
+
+// ── CONFIG ──────────────────────────────────────────────────────────────────
+const NIDDHI_BASE = 'https://niddhi.netlify.app/pages/';
+let currentLang = 'en';
 
 // ── CANVAS STATE ────────────────────────────────────────────────────────────
 const canvas = document.getElementById('cosmos');
@@ -439,10 +474,11 @@ function draw() {
         ctx.textBaseline = 'middle';
         ctx.fillText(node.data.pali, node.x, node.y);
 
-        // Sublabel
+        // Sublabel (language-aware)
+        const sublabel = currentLang === 'pt' ? node.data.label.pt : node.data.label.en;
         ctx.fillStyle = isSelected || isOnPath ? 'rgba(10,10,20,0.6)' : 'rgba(255,255,255,0.3)';
         ctx.font = '300 8px Inter, sans-serif';
-        ctx.fillText(node.data.label.en, node.x, node.y + r + 14);
+        ctx.fillText(sublabel, node.x, node.y + r + 14);
     }
 
     tick();
@@ -493,9 +529,15 @@ canvas.addEventListener('click', e => {
 function openPanel(node) {
     selectedNode = node;
     const d = node.data;
-    document.getElementById('panel-label').textContent = d.label.en;
-    document.getElementById('panel-pali').textContent = d.pali + ' — ' + d.label.pt;
+    const label = currentLang === 'pt' ? d.label.pt : d.label.en;
+    const otherLabel = currentLang === 'pt' ? d.label.en : d.label.pt;
+    document.getElementById('panel-label').textContent = label;
+    document.getElementById('panel-pali').textContent = d.pali + ' — ' + otherLabel;
     document.getElementById('panel-type').textContent = d.type.replace(/_/g, ' ');
+
+    // UI language
+    document.getElementById('lbl-connected').textContent = currentLang === 'pt' ? 'Conceitos Conectados' : 'Connected Concepts';
+    document.getElementById('lbl-citations').textContent = currentLang === 'pt' ? 'Ler no AXIS-NIDDHI ↗' : 'Read on AXIS-NIDDHI ↗';
 
     const edgesDiv = document.getElementById('panel-edges');
     edgesDiv.innerHTML = d.edges.map(e => {
@@ -503,12 +545,27 @@ function openPanel(node) {
         return cd ? `<span class="edge-pill" onclick="navigateTo('${e}')">${cd.pali}</span>` : '';
     }).join('');
 
+    // Citations as clickable links to AXIS-NIDDHI
     const citDiv = document.getElementById('panel-citations');
-    citDiv.innerHTML = d.citations.map(c =>
-        `<div class="citation-card"><span class="citation-pdpn">${c.pdpn}</span><span class="citation-title"> ${c.t}</span></div>`
-    ).join('');
+    citDiv.innerHTML = d.citations.map(c => {
+        const url = NIDDHI_BASE + c.pdpn + '/';
+        return `<a class="citation-card" href="${url}" target="_blank" rel="noopener">`
+             + `<span class="citation-pdpn">${c.pdpn}</span>`
+             + `<span class="citation-title"> ${c.t}</span>`
+             + `<span class="citation-arrow">→</span>`
+             + `</a>`;
+    }).join('');
 
     document.getElementById('panel').classList.add('open');
+}
+
+function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    // Re-render panel if open
+    if (selectedNode) openPanel(selectedNode);
 }
 
 function closePanel() {
