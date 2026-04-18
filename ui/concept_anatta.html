@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anattā — AXIS Navigator</title>
+<style>
+:root {
+  --bg:#0c0f0c; --paper:#111811;
+  --green:#00ff00; --green-dim:#00cc00;
+  --green-faint:rgba(0,255,0,0.06); --border:rgba(0,255,0,0.18);
+  --fg:#d4e8d4; --meta:#668866;
+  --font-serif:Georgia,"Times New Roman",serif;
+  --font-mono:"Courier New",monospace;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:var(--font-serif);
+  min-height:100vh; padding:3rem 1.5rem; }
+.page-wrap { max-width:720px; margin:0 auto; }
+.breadcrumb { font-family:var(--font-mono); font-size:0.65rem;
+  letter-spacing:3px; color:var(--meta); margin-bottom:2.5rem; }
+.breadcrumb a { color:var(--green); text-decoration:none; }
+.concept-type-badge { font-family:var(--font-mono); font-size:0.62rem;
+  letter-spacing:3px; text-transform:uppercase; color:var(--meta);
+  margin-bottom:0.8rem; }
+h1 { font-size:clamp(1.6rem,4vw,2.2rem); font-weight:normal;
+  color:var(--green); letter-spacing:1px; margin-bottom:0.3rem; }
+.label-en { font-size:0.95rem; color:var(--meta); font-style:italic;
+  margin-bottom:2rem; }
+.definition { font-size:1rem; line-height:1.85; margin-bottom:2.5rem;
+  border-left:2px solid var(--border); padding-left:1.5rem; }
+.section-title { font-family:var(--font-mono); font-size:0.65rem;
+  letter-spacing:4px; text-transform:uppercase; color:var(--green);
+  opacity:0.5; margin-bottom:1rem; }
+.related-row { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:2.5rem; }
+.related-chip { border:1px solid var(--border); border-radius:20px;
+  padding:5px 14px; font-family:var(--font-mono); font-size:0.65rem;
+  letter-spacing:2px; color:var(--meta); text-decoration:none;
+  transition:0.15s; }
+.related-chip:hover { border-color:var(--green); color:var(--green); }
+.csl-list { display:flex; flex-direction:column; gap:0.7rem; margin-bottom:3rem; }
+.csl-entry { display:flex; align-items:flex-start; gap:1rem;
+  padding:0.9rem 1rem; border:1px solid rgba(0,255,0,0.08);
+  border-radius:8px; background:rgba(0,0,0,0.2);
+  text-decoration:none; color:var(--fg); transition:0.15s; }
+.csl-entry:hover { border-color:rgba(0,255,0,0.3);
+  background:rgba(0,255,0,0.04); }
+.csl-pdpn { font-family:var(--font-mono); font-size:0.62rem;
+  color:var(--green); opacity:0.55; min-width:70px; padding-top:2px; }
+.csl-slug { font-size:0.88rem; line-height:1.4;
+  word-break:break-word; }
+.back-link { font-family:var(--font-mono); font-size:0.65rem;
+  letter-spacing:3px; color:var(--meta); text-decoration:none;
+  display:inline-block;
+  border:1px solid var(--border); padding:0.6rem 1.2rem;
+  border-radius:20px; transition:0.2s; }
+.back-link:hover { color:var(--green); border-color:var(--green); }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="breadcrumb">
+    <a href="start.html">NAVIGATOR</a> ·
+    <a href="concepts.html">CONCEPTS</a> ·
+    ANATTA
+  </div>
+
+  <div class="concept-type-badge">dhamma characteristic</div>
+  <h1>Anattā</h1>
+  <div class="label-en">non-self</div>
+
+  <div class="definition">The third of the three marks. No phenomenon — material or mental — possesses a permanent, independent self or soul. Anattā is not nihilism but the insight into dependent origination: what appears as 'self' is a conditioned, impermanent process arising from causes and conditions.</div>
+
+  <div class="section-title">Related Concepts</div>
+  <div class="related-row">
+      <a class="related-chip" href="concept_anicca.html">Anicca</a>
+      <a class="related-chip" href="concept_dukkha.html">Dukkha</a>
+      <a class="related-chip" href="concept_tilakkhana.html">Tilakkhaṇa</a>
+      <a class="related-chip" href="concept_paticca_samuppada.html">Paṭicca Samuppāda</a>
+  </div>
+
+  <div class="section-title">Canon Entries (3)</div>
+  <div class="csl-list">
+      <a class="csl-entry" href="../../is/does-anatta-refer-to-a-self/index.html">
+        <span class="csl-pdpn">IS.BB.001</span>
+        <span class="csl-slug">does anatta refer to a self</span>
+      </a>
+      <a class="csl-entry" href="../../kd/anatta-is-a-characteristic-of-the-world-not-about-a-self/index.html">
+        <span class="csl-pdpn">KD.CC.007</span>
+        <span class="csl-slug">anatta is a characteristic of the world not about a self</span>
+      </a>
+      <a class="csl-entry" href="../../kd/anatta-in-anattalakkhana-sutta-part-1/index.html">
+        <span class="csl-pdpn">KD.CC.008</span>
+        <span class="csl-slug">anatta in anattalakkhana sutta part 1</span>
+      </a>
+  </div>
+
+  <a class="back-link" href="concepts.html">← CONCEPT INDEX</a>
+
+</div>
+</body>
+</html>

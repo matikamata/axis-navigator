@@ -1,0 +1,30 @@
+{
+  "concept": "tilakkhana",
+  "type": "doctrine",
+  "pali": "Tilakkhaṇa",
+  "translations": {
+    "en": "three characteristics of existence",
+    "pt-BR": "três características da existência"
+  },
+  "description": "The three universal characteristics of all conditioned phenomena: Anicca (impermanence), Dukkha (unsatisfactoriness), and Anattā (non-self). The Tilakkhaṇa is the foundational analytical framework of Buddha Dhamma. Direct comprehension of all three marks leads to disenchantment, cessation of craving, and liberation (Nibbāna).",
+  "first_occurrence": "KD.CC.001",
+  "occurrences": [
+    "KD.CC.001",
+    "KD.BB.002",
+    "KD.BB.003",
+    "KD.CC.004",
+    "KD.FF.020",
+    "KD.FF.021"
+  ],
+  "related": [
+    "anicca",
+    "dukkha",
+    "anatta",
+    "nibbana",
+    "paticca_samuppada"
+  ],
+  "glossary_refs": [
+    "Tilakkhana"
+  ],
+  "schema_version": "1.0"
+}

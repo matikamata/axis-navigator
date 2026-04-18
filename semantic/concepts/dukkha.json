@@ -1,0 +1,35 @@
+{
+  "concept": "dukkha",
+  "type": "dhamma_characteristic",
+  "pali": "Dukkha",
+  "translations": {
+    "en": "suffering / unsatisfactoriness",
+    "pt-BR": "sofrimento / insatisfatoriedade"
+  },
+  "description": "The first of the three characteristics of existence (tilakkhana) and the First Noble Truth. Dukkha encompasses obvious suffering, the suffering inherent in change (anicca), and the pervasive unsatisfactoriness of conditioned existence. Its origin is taṇhā (craving); its cessation is Nibbāna.",
+  "first_occurrence": "BD.AA.009",
+  "occurrences": [
+    "BD.AA.009",
+    "BD.BB.005",
+    "TL.BB.006",
+    "TL.BB.007",
+    "DS.FF.002",
+    "CH.BB.001"
+  ],
+  "related": [
+    "anicca",
+    "anatta",
+    "tilakkhana",
+    "tanha",
+    "nibbana",
+    "paticca_samuppada"
+  ],
+  "glossary_refs": [
+    "Dukkha",
+    "dukkha",
+    "dukkha vedanā",
+    "dukkhānupassanā",
+    "ariyasacca"
+  ],
+  "schema_version": "1.0"
+}

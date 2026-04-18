@@ -1,0 +1,36 @@
+{
+  "concept": "sankhara",
+  "type": "doctrine",
+  "pali": "Saṅkhāra",
+  "translations": {
+    "en": "volitional formations / conditioned phenomena",
+    "pt-BR": "Saṅkhāra / formações volitivas"
+  },
+  "description": "Saṅkhāra has two related meanings in the Canon. (1) As the second nidāna in paticca samuppāda: volitional formations conditioned by avijjā — kamma-generating mental intentions that produce future rebirth. (2) As the fourth khandha (aggregate): all mental formations other than feeling and perception. In the tilakkhaṇa context, sabbe saṅkhārā aniccā / dukkhā — all conditioned things are impermanent and unsatisfactory.",
+  "first_occurrence": "DD.AA.006",
+  "occurrences": [
+    "DD.AA.006",
+    "DS.FF.004",
+    "DS.FF.005",
+    "DS.FF.009",
+    "KD.BB.006",
+    "PS.II.004",
+    "DP.AA.005"
+  ],
+  "related": [
+    "avijja",
+    "paticca_samuppada",
+    "anicca",
+    "dukkha",
+    "tanha"
+  ],
+  "glossary_refs": [
+    "Saṅkhāra",
+    "Abhisaṅkhāra",
+    "abhisaṅkhāra",
+    "anicca saṅkhāra",
+    "cittasaṅkhāra",
+    "asaṅkhāra"
+  ],
+  "schema_version": "1.0"
+}

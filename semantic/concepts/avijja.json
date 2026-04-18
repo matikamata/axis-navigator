@@ -1,0 +1,33 @@
+{
+  "concept": "avijja",
+  "type": "mental_factor",
+  "pali": "Avijjā",
+  "translations": {
+    "en": "ignorance / delusion",
+    "pt-BR": "ignorância / Avijjā"
+  },
+  "description": "The root condition of the entire cycle of dependent origination (paticca samuppāda). Avijjā is not knowing the Four Noble Truths, the tilakkhaṇa, and the true nature of conditioned existence. It is the first nidāna in the twelve-fold chain: avijjā conditions saṅkhāra, which conditions viññāṇa, and so on through to aging-and-death. The cessation of avijjā through wisdom (paññā) brings the entire chain to cessation.",
+  "first_occurrence": "DS.FF.003",
+  "occurrences": [
+    "DS.FF.003",
+    "DS.FF.007",
+    "KD.HH.005",
+    "KD.HH.006",
+    "PS.II.004"
+  ],
+  "related": [
+    "tanha",
+    "paticca_samuppada",
+    "sankhara",
+    "tilakkhana",
+    "nibbana"
+  ],
+  "glossary_refs": [
+    "Avijjā",
+    "avijjā",
+    "the avijja",
+    "the avijjā",
+    "avijjā saṃyojana"
+  ],
+  "schema_version": "1.0"
+}

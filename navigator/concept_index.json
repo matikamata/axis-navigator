@@ -1,0 +1,310 @@
+{
+  "version": "1.0",
+  "corpus": "puredhamma",
+  "concepts": {
+    "dukkha": {
+      "slug": "dukkha",
+      "pali": "Dukkha",
+      "type": "dhamma_characteristic",
+      "label_en": "suffering / unsatisfactoriness",
+      "description": "The First Noble Truth. All conditioned existence involves suffering, unsatisfactoriness, and the inherent instability of impermanent phenomena.",
+      "related": [
+        "anicca",
+        "anatta",
+        "tilakkhana",
+        "tanha",
+        "nibbana"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "BD.AA.009",
+          "slug": "first-noble-truth-is-suffering-myths-about-suffering"
+        },
+        {
+          "pdpn": "TL.BB.006",
+          "slug": "four-noble-truths-recipe-for-problem-solving"
+        },
+        {
+          "pdpn": "TL.BB.007",
+          "slug": "first-noble-truth-a-simple-explanation-of-one-aspect"
+        },
+        {
+          "pdpn": "DS.FF.002",
+          "slug": "tanha-origin-of-suffering"
+        }
+      ]
+    },
+    "anicca": {
+      "slug": "anicca",
+      "pali": "Anicca",
+      "type": "dhamma_characteristic",
+      "label_en": "impermanence",
+      "description": "The first of the three marks. All conditioned things arise and pass away. Nothing in the material or mental world is permanent.",
+      "related": [
+        "dukkha",
+        "anatta",
+        "tilakkhana"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "DD.AA.006",
+          "slug": "anicca-vata-sankhara"
+        },
+        {
+          "pdpn": "IS.BB.003",
+          "slug": "anicca-nature-chasing-worldly-pleasures-is-pointless"
+        },
+        {
+          "pdpn": "DS.KK.002",
+          "slug": "second-law-of-thermodynamics-is-part-of-anicca"
+        }
+      ]
+    },
+    "anatta": {
+      "slug": "anatta",
+      "pali": "Anattā",
+      "type": "dhamma_characteristic",
+      "label_en": "non-self",
+      "description": "The third mark. No phenomenon contains a permanent, independent self or soul. What appears as 'self' is a conditioned, impermanent process.",
+      "related": [
+        "anicca",
+        "dukkha",
+        "tilakkhana"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "IS.BB.001",
+          "slug": "does-anatta-refer-to-a-self"
+        },
+        {
+          "pdpn": "KD.CC.007",
+          "slug": "anatta-is-a-characteristic-of-the-world-not-about-a-self"
+        },
+        {
+          "pdpn": "KD.CC.008",
+          "slug": "anatta-in-anattalakkhana-sutta-part-1"
+        }
+      ]
+    },
+    "tilakkhana": {
+      "slug": "tilakkhana",
+      "pali": "Tilakkhaṇa",
+      "type": "doctrine",
+      "label_en": "three characteristics",
+      "description": "The three universal characteristics of all conditioned phenomena: impermanence (anicca), unsatisfactoriness (dukkha), and non-self (anattā).",
+      "related": [
+        "anicca",
+        "dukkha",
+        "anatta"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "KD.CC.001",
+          "slug": "tilakkhana-introduction"
+        },
+        {
+          "pdpn": "KD.BB.002",
+          "slug": "buddha-dhamma-noble-truths-paticca-samuppada-tilakkhana"
+        },
+        {
+          "pdpn": "KD.FF.020",
+          "slug": "tilakkhana-according-to-some-key-sutta"
+        }
+      ]
+    },
+    "avijja": {
+      "slug": "avijja",
+      "pali": "Avijjā",
+      "type": "mental_factor",
+      "label_en": "ignorance",
+      "description": "Ignorance of the Four Noble Truths and the three characteristics. The first link in dependent origination — the root condition of all suffering.",
+      "related": [
+        "tanha",
+        "paticca_samuppada",
+        "sankhara"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "KD.HH.006",
+          "slug": "what-is-avijja-ignorance"
+        },
+        {
+          "pdpn": "DS.FF.003",
+          "slug": "paticca-samuppada-self-exists-due-to-avijja"
+        },
+        {
+          "pdpn": "PS.II.004",
+          "slug": "avijja-paccaya-sankhara"
+        }
+      ]
+    },
+    "sankhara": {
+      "slug": "sankhara",
+      "pali": "Saṅkhāra",
+      "type": "doctrine",
+      "label_en": "volitional formations",
+      "description": "Volitional formations conditioned by ignorance. The second link in dependent origination — kamma-generating mental intentions.",
+      "related": [
+        "avijja",
+        "paticca_samuppada",
+        "anicca"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "KD.BB.006",
+          "slug": "sankhara-what-it-really-means"
+        },
+        {
+          "pdpn": "DS.FF.004",
+          "slug": "kamma-sankhara-abhisankhara-intention"
+        },
+        {
+          "pdpn": "DD.AA.006",
+          "slug": "anicca-vata-sankhara"
+        }
+      ]
+    },
+    "tanha": {
+      "slug": "tanha",
+      "pali": "Taṇhā",
+      "type": "mental_factor",
+      "label_en": "craving",
+      "description": "The Second Noble Truth. Craving arising from contact, conditioned by ignorance. Three types: sensual craving, craving for existence, craving for non-existence.",
+      "related": [
+        "avijja",
+        "dukkha",
+        "paticca_samuppada"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "DS.FF.002",
+          "slug": "tanha-origin-of-suffering"
+        },
+        {
+          "pdpn": "DS.FF.006",
+          "slug": "tanha-paccaya-upadana"
+        },
+        {
+          "pdpn": "DS.FF.008",
+          "slug": "iccha-cravings-lead-to-upadana-to-suffering"
+        }
+      ]
+    },
+    "paticca_samuppada": {
+      "slug": "paticca_samuppada",
+      "pali": "Paṭicca Samuppāda",
+      "type": "doctrine",
+      "label_en": "dependent origination",
+      "description": "The law of dependent origination — twelve conditioned links from ignorance to aging-and-death. The framework describing how suffering arises and ceases.",
+      "related": [
+        "avijja",
+        "tanha",
+        "sankhara",
+        "dukkha"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "DS.FF.001",
+          "slug": "paticca-samuppada-not-self-or-no-self"
+        },
+        {
+          "pdpn": "ER.BB.003",
+          "slug": "niddesa-brief-description-of-paticca-samuppada"
+        },
+        {
+          "pdpn": "ER.CC.001",
+          "slug": "paticca-samuppada-during-a-lifetime"
+        },
+        {
+          "pdpn": "KD.BB.003",
+          "slug": "noble-truths-paticca-samuppada-tilakkhana-key-relationships"
+        }
+      ]
+    },
+    "magga": {
+      "slug": "magga",
+      "pali": "Ariya Aṭṭhaṅgika Magga",
+      "type": "practice",
+      "label_en": "Noble Eightfold Path",
+      "description": "The Fourth Noble Truth — the Noble Eightfold Path. The practical method for the cessation of suffering, culminating in path attainment (magga) and fruition (phala).",
+      "related": [
+        "phala",
+        "nibbana",
+        "dukkha"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "TL.BB.006",
+          "slug": "four-noble-truths-recipe-for-problem-solving"
+        },
+        {
+          "pdpn": "BD.II.006",
+          "slug": "are-there-procedures-for-attaining-magga-phala-jhana-and-abhinna"
+        },
+        {
+          "pdpn": "LD.EE.001",
+          "slug": "transition-to-noble-eightfold-path"
+        },
+        {
+          "pdpn": "LD.AA.010",
+          "slug": "noble-eightfold-path-role-of-sobhana-cetasika"
+        }
+      ]
+    },
+    "phala": {
+      "slug": "phala",
+      "pali": "Phala",
+      "type": "attainment",
+      "label_en": "fruition",
+      "description": "Fruition consciousness that arises immediately after path attainment. The mind 'falls into' Nibbāna. Four phala levels correspond to the four stages of awakening.",
+      "related": [
+        "magga",
+        "nibbana"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "BD.II.006",
+          "slug": "are-there-procedures-for-attaining-magga-phala-jhana-and-abhinna"
+        },
+        {
+          "pdpn": "BD.JJ.001",
+          "slug": "the-four-stages-in-attaining-nibbana"
+        },
+        {
+          "pdpn": "BM.DD.005",
+          "slug": "samadhi-jhana-magga-phala"
+        }
+      ]
+    },
+    "nibbana": {
+      "slug": "nibbana",
+      "pali": "Nibbāna",
+      "type": "attainment",
+      "label_en": "liberation / cessation",
+      "description": "The unconditioned — the cessation of suffering, craving, and ignorance. The ultimate goal of Buddha Dhamma. Not annihilation but the permanent cessation of the conditioned.",
+      "related": [
+        "magga",
+        "phala",
+        "dukkha"
+      ],
+      "csl_entries": [
+        {
+          "pdpn": "BD.HH.007",
+          "slug": "nibbana-in-the-big-picture"
+        },
+        {
+          "pdpn": "BD.JJ.001",
+          "slug": "the-four-stages-in-attaining-nibbana"
+        },
+        {
+          "pdpn": "BM.CC.005",
+          "slug": "attaining-nibbana-requires-understanding-buddhas-worldview"
+        },
+        {
+          "pdpn": "BD.II.003",
+          "slug": "jhana-stages-of-nibbana"
+        }
+      ]
+    }
+  }
+}

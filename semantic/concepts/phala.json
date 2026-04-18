@@ -1,0 +1,31 @@
+{
+  "concept": "phala",
+  "type": "attainment",
+  "pali": "Phala",
+  "translations": {
+    "en": "fruition",
+    "pt-BR": "fruição"
+  },
+  "description": "Fruition of a noble path (magga). The realization moment that follows path attainment — the mind 'falls into' Nibbāna at the moment of phala. Four phala levels correspond to the four stages: Sotāpatti, Sakadāgāmi, Anāgāmi, Arahatta.",
+  "first_occurrence": "BD.II.006",
+  "occurrences": [
+    "BD.II.006",
+    "BD.JJ.001",
+    "BM.DD.005"
+  ],
+  "related": [
+    "magga",
+    "nibbana",
+    "anicca",
+    "dukkha",
+    "anatta"
+  ],
+  "glossary_refs": [
+    "Magga Phala",
+    "Arahattaphala",
+    "Arahattamagga",
+    "Anāgāmimagga",
+    "Anāgāmiphala"
+  ],
+  "schema_version": "1.0"
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIS Navigator — PureDhamma</title>
+<style>
+:root {
+  --bg: #0c0f0c;
+  --paper: #111811;
+  --green: #00ff00;
+  --green-dim: #00cc00;
+  --green-faint: rgba(0,255,0,0.07);
+  --border: rgba(0,255,0,0.18);
+  --fg: #d4e8d4;
+  --meta: #668866;
+  --font-serif: Georgia,"Times New Roman",serif;
+  --font-mono: "Courier New",monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 4rem 1.5rem;
+}
+.axis-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.axis-sigil {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 6px;
+  color: var(--green);
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+}
+h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: normal;
+  color: var(--green);
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--meta);
+  font-style: italic;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 860px;
+  margin-bottom: 3rem;
+}
+.nav-card {
+  border: 1px solid var(--border);
+  background: var(--green-faint);
+  border-radius: 12px;
+  padding: 2rem 1.8rem;
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  display: block;
+}
+.nav-card:hover {
+  border-color: var(--green);
+  background: rgba(0,255,0,0.11);
+  transform: translateY(-3px);
+}
+.card-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: var(--green-dim);
+  margin-bottom: 0.6rem;
+}
+.card-desc {
+  font-size: 0.88rem;
+  color: var(--meta);
+  line-height: 1.6;
+}
+.corpus-note {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--meta);
+  letter-spacing: 2px;
+  opacity: 0.5;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  max-width: 860px;
+  width: 100%;
+}
+.pulse { animation: pulse 3s ease-in-out infinite; }
+@keyframes pulse {
+  0%,100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<header class="axis-header">
+  <div class="axis-sigil pulse">AXIS-NIDDHI · PUREDHAMMA · NAVIGATOR</div>
+  <h1>Study the Teaching</h1>
+  <p class="subtitle">
+    A structured guide through the scientific framework of the Buddha's teaching
+    — preserved from the original PureDhamma archive.
+  </p>
+</header>
+
+<nav class="nav-grid">
+  <a class="nav-card" href="paths.html">
+    <div class="card-label">Guided</div>
+    <div class="card-title">Study Paths</div>
+    <div class="card-desc">Three structured sequences: foundations, dependent origination, and the path to liberation.</div>
+  </a>
+  <a class="nav-card" href="concepts.html">
+    <div class="card-label">Reference</div>
+    <div class="card-title">Concept Index</div>
+    <div class="card-desc">All 11 canonical concepts with Pāli terms, definitions, and linked Canon entries.</div>
+  </a>
+  <a class="nav-card" href="../index.html">
+    <div class="card-label">Archive</div>
+    <div class="card-title">Full Canon</div>
+    <div class="card-desc">748 posts from the PureDhamma archive — the complete teaching in English and Portuguese.</div>
+  </a>
+</nav>
+
+<div class="corpus-note">
+  PUREDHAMMA · 748 ENTRIES · EN-US + PT-BR · AXIS-NIDDHI V5.4
+</div>
+
+</body>
+</html>

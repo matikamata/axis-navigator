@@ -1,0 +1,7 @@
+{
+  "layer": "AXIS-SEMANTIC",
+  "version": 1,
+  "description": "Semantic concept index for PureDhamma corpus. Additive layer — never modifies canon text.",
+  "corpus": "puredhamma",
+  "concepts": []
+}

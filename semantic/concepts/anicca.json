@@ -1,0 +1,32 @@
+{
+  "concept": "anicca",
+  "type": "dhamma_characteristic",
+  "pali": "Anicca",
+  "translations": {
+    "en": "impermanence",
+    "pt-BR": "impermanência"
+  },
+  "description": "The first of the three marks of existence. All conditioned things arise and pass away. Nothing in the material or mental world is permanent. Direct insight into anicca leads to disenchantment and liberation.",
+  "first_occurrence": "DD.AA.006",
+  "occurrences": [
+    "DD.AA.006",
+    "IS.BB.003",
+    "DS.KK.002",
+    "KD.CC.001",
+    "KD.BB.002",
+    "KD.FF.020",
+    "IS.BB.001"
+  ],
+  "related": [
+    "dukkha",
+    "anatta",
+    "tilakkhana",
+    "sankhara"
+  ],
+  "glossary_refs": [
+    "Anicca",
+    "anicca",
+    "anicca saṅkhāra"
+  ],
+  "schema_version": "1.0"
+}

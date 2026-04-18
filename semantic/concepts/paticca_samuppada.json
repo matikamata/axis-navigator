@@ -1,0 +1,31 @@
+{
+  "concept": "paticca_samuppada",
+  "type": "doctrine",
+  "pali": "Paṭicca Samuppāda",
+  "translations": {
+    "en": "dependent origination",
+    "pt-BR": "originação dependente / surgimento condicionado"
+  },
+  "description": "The law of dependent origination — the central causal framework of Buddha Dhamma. Describes how suffering arises and ceases through a twelve-fold chain of conditioned links (nidāna): avijjā → saṅkhāra → viññāṇa → nāmarūpa → saḷāyatana → phassa → vedanā → taṇhā → upādāna → bhava → jāti → jarāmaraṇa. The reverse sequence — cessation of avijjā leads to cessation of the entire chain — is the path to Nibbāna. Paticca samuppāda is inseparable from the tilakkhaṇa and the Four Noble Truths.",
+  "first_occurrence": "DS.FF.001",
+  "occurrences": [
+    "DS.FF.001",
+    "DS.FF.003",
+    "DS.FF.010",
+    "DS.DD.003",
+    "ER.BB.003",
+    "ER.CC.001",
+    "KD.BB.002",
+    "KD.BB.003"
+  ],
+  "related": [
+    "avijja",
+    "tanha",
+    "sankhara",
+    "dukkha",
+    "nibbana",
+    "tilakkhana"
+  ],
+  "glossary_refs": [],
+  "schema_version": "1.0"
+}

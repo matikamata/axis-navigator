@@ -1,0 +1,42 @@
+{
+  "schema": "AXIS-COSMOS-CLUSTERS-V1",
+  "generated": "2026-03-13T21:09:18.162426+00:00",
+  "clusters": [
+    {
+      "cluster_id": "SUFFERING_CLUSTER",
+      "name": "Origin of Suffering",
+      "concepts": [
+        "avijja",
+        "dukkha",
+        "paticca_samuppada",
+        "sankhara",
+        "tanha"
+      ],
+      "gravity_center": "paticca_samuppada",
+      "total_gravity": 23.6
+    },
+    {
+      "cluster_id": "THREE_MARKS_CLUSTER",
+      "name": "Three Marks of Existence",
+      "concepts": [
+        "anatta",
+        "anicca",
+        "tilakkhana"
+      ],
+      "gravity_center": "anatta",
+      "total_gravity": 13.6
+    },
+    {
+      "cluster_id": "LIBERATION_CLUSTER",
+      "name": "Liberation Sequence",
+      "concepts": [
+        "magga",
+        "nibbana",
+        "phala"
+      ],
+      "gravity_center": "magga",
+      "total_gravity": 10.5
+    }
+  ],
+  "total": 3
+}

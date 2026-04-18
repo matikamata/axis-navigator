@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept Index — AXIS Navigator</title>
+<style>
+:root {
+  --bg:#0c0f0c; --paper:#111811;
+  --green:#00ff00; --green-dim:#00cc00;
+  --green-faint:rgba(0,255,0,0.06); --border:rgba(0,255,0,0.18);
+  --fg:#d4e8d4; --meta:#668866;
+  --font-serif:Georgia,"Times New Roman",serif;
+  --font-mono:"Courier New",monospace;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:var(--font-serif);
+  min-height:100vh; padding:3rem 1.5rem; }
+.page-wrap { max-width:900px; margin:0 auto; }
+.breadcrumb { font-family:var(--font-mono); font-size:0.65rem;
+  letter-spacing:3px; color:var(--meta); margin-bottom:2.5rem; }
+.breadcrumb a { color:var(--green); text-decoration:none; }
+h1 { font-size:clamp(1.4rem,3.5vw,2rem); font-weight:normal;
+  color:var(--green); letter-spacing:1px; margin-bottom:0.5rem; }
+.page-desc { color:var(--meta); font-style:italic; font-size:0.9rem;
+  margin-bottom:2.5rem; line-height:1.6; }
+.filter-row { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:2rem; }
+.filter-btn { font-family:var(--font-mono); font-size:0.6rem; letter-spacing:2px;
+  padding:4px 12px; border-radius:20px; border:1px solid var(--border);
+  background:transparent; color:var(--meta); cursor:pointer; transition:0.2s;
+  text-transform:uppercase; }
+.filter-btn:hover, .filter-btn.active { border-color:var(--green);
+  color:var(--green); background:var(--green-faint); }
+.concepts-grid { display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.2rem; }
+.concept-card { border:1px solid var(--border); border-radius:12px;
+  padding:1.5rem; background:var(--green-faint);
+  text-decoration:none; color:var(--fg);
+  transition:border-color 0.15s, background 0.15s, transform 0.15s;
+  display:block; }
+.concept-card:hover { border-color:var(--green);
+  background:rgba(0,255,0,0.09); transform:translateY(-2px); }
+.concept-type { font-family:var(--font-mono); font-size:0.58rem;
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:0.5rem; }
+.type-dhamma_characteristic { color:#00cc88; }
+.type-doctrine               { color:#ccaa00; }
+.type-mental_factor          { color:#cc6688; }
+.type-practice               { color:#6688cc; }
+.type-attainment             { color:#aa88ff; }
+.concept-pali { font-size:1.05rem; color:var(--green-dim);
+  font-weight:normal; margin-bottom:0.3rem; }
+.concept-en { font-size:0.82rem; color:var(--meta);
+  font-style:italic; margin-bottom:0.7rem; }
+.concept-desc { font-size:0.82rem; color:var(--fg);
+  line-height:1.55; opacity:0.8;
+  display:-webkit-box; -webkit-line-clamp:3;
+  -webkit-box-orient:vertical; overflow:hidden; }
+.concept-footer { margin-top:0.9rem; display:flex;
+  gap:0.5rem; align-items:center; }
+.csl-count { font-family:var(--font-mono); font-size:0.6rem;
+  color:var(--meta); letter-spacing:1px; }
+.back-link { font-family:var(--font-mono); font-size:0.65rem;
+  letter-spacing:3px; color:var(--meta); text-decoration:none;
+  display:inline-block; margin-top:2.5rem;
+  border:1px solid var(--border); padding:0.6rem 1.2rem;
+  border-radius:20px; transition:0.2s; }
+.back-link:hover { color:var(--green); border-color:var(--green); }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="breadcrumb">
+    <a href="start.html">NAVIGATOR</a> · CONCEPT INDEX
+  </div>
+
+  <h1>Concept Index</h1>
+  <p class="page-desc">
+    11 canonical concepts from the PureDhamma corpus — each with Pāli term,
+    definition, related concepts, and linked Canon entries.
+  </p>
+
+  <div class="filter-row" id="filters">
+    <button class="filter-btn active" onclick="filter('all',this)">All</button>
+    <button class="filter-btn" onclick="filter('dhamma_characteristic',this)">Three Marks</button>
+    <button class="filter-btn" onclick="filter('doctrine',this)">Doctrine</button>
+    <button class="filter-btn" onclick="filter('mental_factor',this)">Mental Factors</button>
+    <button class="filter-btn" onclick="filter('practice',this)">Practice</button>
+    <button class="filter-btn" onclick="filter('attainment',this)">Attainment</button>
+  </div>
+
+  <div class="concepts-grid" id="grid">
+
+    <a class="concept-card" href="concept_dukkha.html" data-type="dhamma_characteristic">
+      <div class="concept-type type-dhamma_characteristic">dhamma_characteristic</div>
+      <div class="concept-pali">Dukkha</div>
+      <div class="concept-en">suffering / unsatisfactoriness</div>
+      <div class="concept-desc">The First Noble Truth. All conditioned existence involves suffering, unsatisfactoriness, and the inherent instability of impermanent phenomena.</div>
+      <div class="concept-footer"><span class="csl-count">4 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_anicca.html" data-type="dhamma_characteristic">
+      <div class="concept-type type-dhamma_characteristic">dhamma_characteristic</div>
+      <div class="concept-pali">Anicca</div>
+      <div class="concept-en">impermanence</div>
+      <div class="concept-desc">The first of the three marks. All conditioned things arise and pass away. Nothing in the material or mental world is permanent.</div>
+      <div class="concept-footer"><span class="csl-count">3 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_anatta.html" data-type="dhamma_characteristic">
+      <div class="concept-type type-dhamma_characteristic">dhamma_characteristic</div>
+      <div class="concept-pali">Anattā</div>
+      <div class="concept-en">non-self</div>
+      <div class="concept-desc">The third mark. No phenomenon contains a permanent, independent self or soul. What appears as 'self' is a conditioned, impermanent process.</div>
+      <div class="concept-footer"><span class="csl-count">3 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_tilakkhana.html" data-type="doctrine">
+      <div class="concept-type type-doctrine">doctrine</div>
+      <div class="concept-pali">Tilakkhaṇa</div>
+      <div class="concept-en">three characteristics of existence</div>
+      <div class="concept-desc">The three universal characteristics of all conditioned phenomena: impermanence, unsatisfactoriness, and non-self.</div>
+      <div class="concept-footer"><span class="csl-count">3 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_avijja.html" data-type="mental_factor">
+      <div class="concept-type type-mental_factor">mental_factor</div>
+      <div class="concept-pali">Avijjā</div>
+      <div class="concept-en">ignorance</div>
+      <div class="concept-desc">The root condition of the entire cycle of dependent origination. Not knowing the Four Noble Truths and the three characteristics.</div>
+      <div class="concept-footer"><span class="csl-count">3 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_sankhara.html" data-type="doctrine">
+      <div class="concept-type type-doctrine">doctrine</div>
+      <div class="concept-pali">Saṅkhāra</div>
+      <div class="concept-en">volitional formations</div>
+      <div class="concept-desc">Volitional formations conditioned by ignorance. The second link in dependent origination — kamma-generating mental intentions.</div>
+      <div class="concept-footer"><span class="csl-count">3 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_tanha.html" data-type="mental_factor">
+      <div class="concept-type type-mental_factor">mental_factor</div>
+      <div class="concept-pali">Taṇhā</div>
+      <div class="concept-en">craving</div>
+      <div class="concept-desc">The Second Noble Truth — the origin of suffering. Compulsive craving arising from contact with sense objects, conditioned by ignorance.</div>
+      <div class="concept-footer"><span class="csl-count">3 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_paticca_samuppada.html" data-type="doctrine">
+      <div class="concept-type type-doctrine">doctrine</div>
+      <div class="concept-pali">Paṭicca Samuppāda</div>
+      <div class="concept-en">dependent origination</div>
+      <div class="concept-desc">The law of dependent origination — twelve conditioned links from ignorance to aging-and-death. The framework for how suffering arises and ceases.</div>
+      <div class="concept-footer"><span class="csl-count">4 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_magga.html" data-type="practice">
+      <div class="concept-type type-practice">practice</div>
+      <div class="concept-pali">Ariya Aṭṭhaṅgika Magga</div>
+      <div class="concept-en">Noble Eightfold Path</div>
+      <div class="concept-desc">The Fourth Noble Truth — the practical method for the cessation of suffering, culminating in path attainment and fruition.</div>
+      <div class="concept-footer"><span class="csl-count">4 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_phala.html" data-type="attainment">
+      <div class="concept-type type-attainment">attainment</div>
+      <div class="concept-pali">Phala</div>
+      <div class="concept-en">fruition</div>
+      <div class="concept-desc">Fruition consciousness that arises immediately after path attainment. Four phala levels correspond to the four stages of awakening.</div>
+      <div class="concept-footer"><span class="csl-count">3 CSL ENTRIES</span></div>
+    </a>
+
+    <a class="concept-card" href="concept_nibbana.html" data-type="attainment">
+      <div class="concept-type type-attainment">attainment</div>
+      <div class="concept-pali">Nibbāna</div>
+      <div class="concept-en">liberation / cessation</div>
+      <div class="concept-desc">The unconditioned — the cessation of suffering, craving, and ignorance. The ultimate goal of Buddha Dhamma.</div>
+      <div class="concept-footer"><span class="csl-count">4 CSL ENTRIES</span></div>
+    </a>
+
+  </div>
+
+  <a class="back-link" href="start.html">← BACK TO NAVIGATOR</a>
+
+</div>
+<script>
+function filter(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.concept-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

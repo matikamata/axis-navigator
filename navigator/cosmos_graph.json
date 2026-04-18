@@ -1,0 +1,320 @@
+{
+  "generated": "2026-03-13T21:09:18.162426+00:00",
+  "engine": "AXIS-COSMOS V1.0",
+  "invariant": "All knowledge sourced from AXIS ÑĀṆA",
+  "schema": "AXIS-COSMOS-GRAPH-V1",
+  "nodes": [
+    {
+      "concept_id": "dukkha",
+      "label": "Dukkha",
+      "depth": 0,
+      "citation_count": 6,
+      "edge_degree": 7,
+      "path_frequency": 1,
+      "centrality_score": 1.0,
+      "gravity_score": 5.3,
+      "cluster_id": "SUFFERING_CLUSTER",
+      "type": "dhamma_characteristic"
+    },
+    {
+      "concept_id": "anicca",
+      "label": "Anicca",
+      "depth": 0,
+      "citation_count": 7,
+      "edge_degree": 3,
+      "path_frequency": 1,
+      "centrality_score": 0.429,
+      "gravity_score": 4.6,
+      "cluster_id": "THREE_MARKS_CLUSTER",
+      "type": "dhamma_characteristic"
+    },
+    {
+      "concept_id": "anatta",
+      "label": "Anattā",
+      "depth": 0,
+      "citation_count": 7,
+      "edge_degree": 3,
+      "path_frequency": 1,
+      "centrality_score": 0.429,
+      "gravity_score": 4.6,
+      "cluster_id": "THREE_MARKS_CLUSTER",
+      "type": "dhamma_characteristic"
+    },
+    {
+      "concept_id": "tilakkhana",
+      "label": "Tilakkhaṇa",
+      "depth": 1,
+      "citation_count": 6,
+      "edge_degree": 4,
+      "path_frequency": 1,
+      "centrality_score": 0.571,
+      "gravity_score": 4.4,
+      "cluster_id": "THREE_MARKS_CLUSTER",
+      "type": "doctrine"
+    },
+    {
+      "concept_id": "avijja",
+      "label": "Avijjā",
+      "depth": 0,
+      "citation_count": 5,
+      "edge_degree": 4,
+      "path_frequency": 1,
+      "centrality_score": 0.571,
+      "gravity_score": 3.9,
+      "cluster_id": "SUFFERING_CLUSTER",
+      "type": "mental_factor"
+    },
+    {
+      "concept_id": "sankhara",
+      "label": "Saṅkhāra",
+      "depth": 1,
+      "citation_count": 7,
+      "edge_degree": 2,
+      "path_frequency": 1,
+      "centrality_score": 0.286,
+      "gravity_score": 4.3,
+      "cluster_id": "SUFFERING_CLUSTER",
+      "type": "doctrine"
+    },
+    {
+      "concept_id": "tanha",
+      "label": "Taṇhā",
+      "depth": 0,
+      "citation_count": 6,
+      "edge_degree": 5,
+      "path_frequency": 1,
+      "centrality_score": 0.714,
+      "gravity_score": 4.7,
+      "cluster_id": "SUFFERING_CLUSTER",
+      "type": "mental_factor"
+    },
+    {
+      "concept_id": "paticca_samuppada",
+      "label": "Paṭicca Samuppāda",
+      "depth": 1,
+      "citation_count": 8,
+      "edge_degree": 4,
+      "path_frequency": 1,
+      "centrality_score": 0.571,
+      "gravity_score": 5.4,
+      "cluster_id": "SUFFERING_CLUSTER",
+      "type": "doctrine"
+    },
+    {
+      "concept_id": "magga",
+      "label": "Ariya Aṭṭhaṅgika Magga",
+      "depth": 1,
+      "citation_count": 6,
+      "edge_degree": 3,
+      "path_frequency": 1,
+      "centrality_score": 0.429,
+      "gravity_score": 4.1,
+      "cluster_id": "LIBERATION_CLUSTER",
+      "type": "practice"
+    },
+    {
+      "concept_id": "phala",
+      "label": "Phala",
+      "depth": 2,
+      "citation_count": 3,
+      "edge_degree": 2,
+      "path_frequency": 1,
+      "centrality_score": 0.286,
+      "gravity_score": 2.3,
+      "cluster_id": "LIBERATION_CLUSTER",
+      "type": "attainment"
+    },
+    {
+      "concept_id": "nibbana",
+      "label": "Nibbāna",
+      "depth": 2,
+      "citation_count": 6,
+      "edge_degree": 3,
+      "path_frequency": 1,
+      "centrality_score": 0.429,
+      "gravity_score": 4.1,
+      "cluster_id": "LIBERATION_CLUSTER",
+      "type": "attainment"
+    }
+  ],
+  "edges": [
+    {
+      "source": "tilakkhana",
+      "target": "anicca",
+      "relation_type": "depends_on",
+      "weight": 1.0
+    },
+    {
+      "source": "tilakkhana",
+      "target": "dukkha",
+      "relation_type": "depends_on",
+      "weight": 1.0
+    },
+    {
+      "source": "tilakkhana",
+      "target": "anatta",
+      "relation_type": "depends_on",
+      "weight": 1.0
+    },
+    {
+      "source": "dukkha",
+      "target": "anicca",
+      "relation_type": "co_occurs",
+      "weight": 0.9
+    },
+    {
+      "source": "dukkha",
+      "target": "anatta",
+      "relation_type": "co_occurs",
+      "weight": 0.9
+    },
+    {
+      "source": "anicca",
+      "target": "anatta",
+      "relation_type": "co_occurs",
+      "weight": 0.8
+    },
+    {
+      "source": "avijja",
+      "target": "sankhara",
+      "relation_type": "causal",
+      "weight": 1.0
+    },
+    {
+      "source": "avijja",
+      "target": "tanha",
+      "relation_type": "co_occurs",
+      "weight": 0.9
+    },
+    {
+      "source": "avijja",
+      "target": "paticca_samuppada",
+      "relation_type": "depends_on",
+      "weight": 1.0
+    },
+    {
+      "source": "sankhara",
+      "target": "tanha",
+      "relation_type": "causal",
+      "weight": 0.8
+    },
+    {
+      "source": "tanha",
+      "target": "dukkha",
+      "relation_type": "causal",
+      "weight": 1.0
+    },
+    {
+      "source": "tanha",
+      "target": "paticca_samuppada",
+      "relation_type": "depends_on",
+      "weight": 0.9
+    },
+    {
+      "source": "magga",
+      "target": "nibbana",
+      "relation_type": "cessation",
+      "weight": 1.0
+    },
+    {
+      "source": "magga",
+      "target": "phala",
+      "relation_type": "co_occurs",
+      "weight": 1.0
+    },
+    {
+      "source": "phala",
+      "target": "nibbana",
+      "relation_type": "cessation",
+      "weight": 1.0
+    },
+    {
+      "source": "magga",
+      "target": "dukkha",
+      "relation_type": "co_occurs",
+      "weight": 0.7
+    },
+    {
+      "source": "paticca_samuppada",
+      "target": "dukkha",
+      "relation_type": "co_occurs",
+      "weight": 0.8
+    },
+    {
+      "source": "paticca_samuppada",
+      "target": "tanha",
+      "relation_type": "depends_on",
+      "weight": 0.8
+    },
+    {
+      "source": "nibbana",
+      "target": "tilakkhana",
+      "relation_type": "co_occurs",
+      "weight": 0.6
+    },
+    {
+      "source": "avijja",
+      "target": "dukkha",
+      "relation_type": "causal",
+      "weight": 0.8
+    },
+    {
+      "source": "anatta",
+      "target": "tilakkhana",
+      "relation_type": "path_sequence",
+      "weight": 0.8
+    }
+  ],
+  "clusters": [
+    {
+      "cluster_id": "SUFFERING_CLUSTER",
+      "name": "Origin of Suffering",
+      "concepts": [
+        "avijja",
+        "dukkha",
+        "paticca_samuppada",
+        "sankhara",
+        "tanha"
+      ],
+      "gravity_center": "paticca_samuppada",
+      "total_gravity": 23.6
+    },
+    {
+      "cluster_id": "THREE_MARKS_CLUSTER",
+      "name": "Three Marks of Existence",
+      "concepts": [
+        "anatta",
+        "anicca",
+        "tilakkhana"
+      ],
+      "gravity_center": "anatta",
+      "total_gravity": 13.6
+    },
+    {
+      "cluster_id": "LIBERATION_CLUSTER",
+      "name": "Liberation Sequence",
+      "concepts": [
+        "magga",
+        "nibbana",
+        "phala"
+      ],
+      "gravity_center": "magga",
+      "total_gravity": 10.5
+    }
+  ],
+  "stats": {
+    "node_count": 11,
+    "edge_count": 21,
+    "cluster_count": 3,
+    "highest_gravity": "paticca_samuppada",
+    "highest_gravity_score": 5.4,
+    "avg_gravity": 4.336,
+    "relation_types": {
+      "causal": 4,
+      "cessation": 2,
+      "co_occurs": 8,
+      "depends_on": 6,
+      "path_sequence": 1
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "AXIS-COSMOS-PATHS-V1",
+  "generated": "2026-03-13T21:09:18.162426+00:00",
+  "paths": {
+    "BEGINNER_PATH": {
+      "sequence": [
+        "dukkha",
+        "anicca",
+        "anatta",
+        "tilakkhana"
+      ],
+      "nodes": [
+        {
+          "concept_id": "dukkha",
+          "label": "Dukkha",
+          "gravity_score": 5.3,
+          "cluster_id": "SUFFERING_CLUSTER"
+        },
+        {
+          "concept_id": "anicca",
+          "label": "Anicca",
+          "gravity_score": 4.6,
+          "cluster_id": "THREE_MARKS_CLUSTER"
+        },
+        {
+          "concept_id": "anatta",
+          "label": "Anattā",
+          "gravity_score": 4.6,
+          "cluster_id": "THREE_MARKS_CLUSTER"
+        },
+        {
+          "concept_id": "tilakkhana",
+          "label": "Tilakkhaṇa",
+          "gravity_score": 4.4,
+          "cluster_id": "THREE_MARKS_CLUSTER"
+        }
+      ],
+      "total_gravity": 18.9
+    },
+    "DEPENDENT_ORIGINATION_PATH": {
+      "sequence": [
+        "avijja",
+        "sankhara",
+        "tanha",
+        "paticca_samuppada"
+      ],
+      "nodes": [
+        {
+          "concept_id": "avijja",
+          "label": "Avijjā",
+          "gravity_score": 3.9,
+          "cluster_id": "SUFFERING_CLUSTER"
+        },
+        {
+          "concept_id": "sankhara",
+          "label": "Saṅkhāra",
+          "gravity_score": 4.3,
+          "cluster_id": "SUFFERING_CLUSTER"
+        },
+        {
+          "concept_id": "tanha",
+          "label": "Taṇhā",
+          "gravity_score": 4.7,
+          "cluster_id": "SUFFERING_CLUSTER"
+        },
+        {
+          "concept_id": "paticca_samuppada",
+          "label": "Paṭicca Samuppāda",
+          "gravity_score": 5.4,
+          "cluster_id": "SUFFERING_CLUSTER"
+        }
+      ],
+      "total_gravity": 18.3
+    },
+    "LIBERATION_PATH": {
+      "sequence": [
+        "magga",
+        "phala",
+        "nibbana"
+      ],
+      "nodes": [
+        {
+          "concept_id": "magga",
+          "label": "Ariya Aṭṭhaṅgika Magga",
+          "gravity_score": 4.1,
+          "cluster_id": "LIBERATION_CLUSTER"
+        },
+        {
+          "concept_id": "phala",
+          "label": "Phala",
+          "gravity_score": 2.3,
+          "cluster_id": "LIBERATION_CLUSTER"
+        },
+        {
+          "concept_id": "nibbana",
+          "label": "Nibbāna",
+          "gravity_score": 4.1,
+          "cluster_id": "LIBERATION_CLUSTER"
+        }
+      ],
+      "total_gravity": 10.5
+    }
+  }
+}

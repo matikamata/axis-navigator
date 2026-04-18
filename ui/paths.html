@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Paths — AXIS Navigator</title>
+<style>
+:root {
+  --bg: #0c0f0c; --paper: #111811;
+  --green: #00ff00; --green-dim: #00cc00;
+  --green-faint: rgba(0,255,0,0.06); --border: rgba(0,255,0,0.18);
+  --fg: #d4e8d4; --meta: #668866;
+  --font-serif: Georgia,"Times New Roman",serif;
+  --font-mono: "Courier New",monospace;
+  --beginner: #00cc88; --intermediate: #ccaa00; --advanced: #cc6600;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-serif);
+  min-height: 100vh; padding: 3rem 1.5rem; }
+.page-wrap { max-width: 860px; margin: 0 auto; }
+.breadcrumb { font-family: var(--font-mono); font-size: 0.65rem;
+  letter-spacing: 3px; color: var(--meta); margin-bottom: 2.5rem; }
+.breadcrumb a { color: var(--green); text-decoration: none; }
+h1 { font-size: clamp(1.4rem,3.5vw,2rem); font-weight: normal;
+  color: var(--green); letter-spacing: 1px; margin-bottom: 0.5rem; }
+.page-desc { color: var(--meta); font-style: italic; font-size: 0.9rem;
+  margin-bottom: 3rem; line-height: 1.6; }
+.path-block { border: 1px solid var(--border); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2rem;
+  background: var(--green-faint); }
+.path-block:hover { border-color: var(--green-dim); }
+.path-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.path-level {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 3px;
+  padding: 3px 10px; border-radius: 20px; border: 1px solid;
+  text-transform: uppercase;
+}
+.level-beginner     { color: var(--beginner);     border-color: var(--beginner); }
+.level-intermediate { color: var(--intermediate); border-color: var(--intermediate); }
+.level-advanced     { color: var(--advanced);     border-color: var(--advanced); }
+.path-id { font-family: var(--font-mono); font-size: 0.6rem;
+  letter-spacing: 2px; color: var(--meta); }
+.path-title { font-size: 1.25rem; color: var(--green-dim);
+  font-weight: normal; margin-bottom: 0.4rem; }
+.path-desc { font-size: 0.87rem; color: var(--meta);
+  line-height: 1.6; margin-bottom: 1.8rem; }
+.steps { display: flex; flex-direction: column; gap: 0.8rem; }
+.step { display: flex; align-items: flex-start; gap: 1rem;
+  padding: 0.9rem 1rem; border-radius: 8px;
+  border: 1px solid rgba(0,255,0,0.08);
+  background: rgba(0,0,0,0.2);
+  text-decoration: none; color: var(--fg);
+  transition: border-color 0.15s, background 0.15s; }
+.step:hover { border-color: rgba(0,255,0,0.35);
+  background: rgba(0,255,0,0.05); }
+.step-num { font-family: var(--font-mono); font-size: 0.7rem;
+  color: var(--green); min-width: 24px; padding-top: 2px;
+  opacity: 0.6; }
+.step-body { flex: 1; }
+.step-concept { font-size: 0.95rem; color: var(--green-dim);
+  margin-bottom: 0.2rem; }
+.step-pali { font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--meta); letter-spacing: 1px; }
+.step-note { font-size: 0.82rem; color: var(--meta);
+  font-style: italic; margin-top: 0.25rem; }
+.step-arrow { color: var(--meta); font-size: 0.8rem;
+  padding-top: 4px; opacity: 0.4; }
+.back-link { font-family: var(--font-mono); font-size: 0.65rem;
+  letter-spacing: 3px; color: var(--meta); text-decoration: none;
+  display: inline-block; margin-top: 2.5rem;
+  border: 1px solid var(--border); padding: 0.6rem 1.2rem;
+  border-radius: 20px; transition: 0.2s; }
+.back-link:hover { color: var(--green); border-color: var(--green); }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="breadcrumb">
+    <a href="start.html">NAVIGATOR</a> · STUDY PATHS
+  </div>
+
+  <h1>Study Paths</h1>
+  <p class="page-desc">
+    Three structured sequences through the Buddha's teaching.
+    Each step links to the corresponding Canon entries in the PureDhamma archive.
+  </p>
+
+  <!-- BEGINNER PATH -->
+  <div class="path-block">
+    <div class="path-meta">
+      <span class="path-level level-beginner">Beginner</span>
+      <span class="path-id">BEGINNER_PATH</span>
+    </div>
+    <div class="path-title">Three Marks of Existence</div>
+    <p class="path-desc">Foundation: understand the three characteristics that mark all conditioned phenomena.</p>
+    <div class="steps">
+      <a class="step" href="concept_dukkha.html">
+        <span class="step-num">01</span>
+        <div class="step-body">
+          <div class="step-concept">Dukkha — Suffering</div>
+          <div class="step-pali">DUKKHA · dhamma_characteristic</div>
+          <div class="step-note">Begin with suffering — the problem to be solved</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_anicca.html">
+        <span class="step-num">02</span>
+        <div class="step-body">
+          <div class="step-concept">Anicca — Impermanence</div>
+          <div class="step-pali">ANICCA · dhamma_characteristic</div>
+          <div class="step-note">Impermanence as the root of suffering</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_anatta.html">
+        <span class="step-num">03</span>
+        <div class="step-body">
+          <div class="step-concept">Anattā — Non-Self</div>
+          <div class="step-pali">ANATTA · dhamma_characteristic</div>
+          <div class="step-note">Non-self — what the 'I' actually is</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_tilakkhana.html">
+        <span class="step-num">04</span>
+        <div class="step-body">
+          <div class="step-concept">Tilakkhaṇa — Three Characteristics</div>
+          <div class="step-pali">TILAKKHANA · doctrine</div>
+          <div class="step-note">Synthesis: the three marks as a unified framework</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- DEPENDENT ORIGINATION PATH -->
+  <div class="path-block">
+    <div class="path-meta">
+      <span class="path-level level-intermediate">Intermediate</span>
+      <span class="path-id">DEPENDENT_ORIGINATION_PATH</span>
+    </div>
+    <div class="path-title">Dependent Origination</div>
+    <p class="path-desc">Trace how suffering arises and ceases through the chain of conditioned links.</p>
+    <div class="steps">
+      <a class="step" href="concept_avijja.html">
+        <span class="step-num">01</span>
+        <div class="step-body">
+          <div class="step-concept">Avijjā — Ignorance</div>
+          <div class="step-pali">AVIJJA · mental_factor</div>
+          <div class="step-note">Ignorance — the root condition of the entire chain</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_sankhara.html">
+        <span class="step-num">02</span>
+        <div class="step-body">
+          <div class="step-concept">Saṅkhāra — Volitional Formations</div>
+          <div class="step-pali">SANKHARA · doctrine</div>
+          <div class="step-note">Formations conditioned by ignorance</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_tanha.html">
+        <span class="step-num">03</span>
+        <div class="step-body">
+          <div class="step-concept">Taṇhā — Craving</div>
+          <div class="step-pali">TANHA · mental_factor</div>
+          <div class="step-note">Craving — the proximate origin of suffering</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_paticca_samuppada.html">
+        <span class="step-num">04</span>
+        <div class="step-body">
+          <div class="step-concept">Paṭicca Samuppāda — Dependent Origination</div>
+          <div class="step-pali">PATICCA_SAMUPPADA · doctrine</div>
+          <div class="step-note">The complete twelve-fold chain of conditioned arising</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- LIBERATION PATH -->
+  <div class="path-block">
+    <div class="path-meta">
+      <span class="path-level level-advanced">Advanced</span>
+      <span class="path-id">LIBERATION_PATH</span>
+    </div>
+    <div class="path-title">Path to Liberation</div>
+    <p class="path-desc">Understand the path, the moment of attainment, and the unconditioned goal.</p>
+    <div class="steps">
+      <a class="step" href="concept_magga.html">
+        <span class="step-num">01</span>
+        <div class="step-body">
+          <div class="step-concept">Ariya Aṭṭhaṅgika Magga — Noble Eightfold Path</div>
+          <div class="step-pali">MAGGA · practice</div>
+          <div class="step-note">The Noble Eightfold Path — the method</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_phala.html">
+        <span class="step-num">02</span>
+        <div class="step-body">
+          <div class="step-concept">Phala — Fruition</div>
+          <div class="step-pali">PHALA · attainment</div>
+          <div class="step-note">Fruition — the moment of path attainment</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+      <a class="step" href="concept_nibbana.html">
+        <span class="step-num">03</span>
+        <div class="step-body">
+          <div class="step-concept">Nibbāna — Liberation</div>
+          <div class="step-pali">NIBBANA · attainment</div>
+          <div class="step-note">The unconditioned — the permanent cessation of suffering</div>
+        </div>
+        <span class="step-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+  <a class="back-link" href="start.html">← BACK TO NAVIGATOR</a>
+
+</div>
+</body>
+</html>

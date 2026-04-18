@@ -1,0 +1,33 @@
+{
+  "concept": "tanha",
+  "type": "mental_factor",
+  "pali": "Taṇhā",
+  "translations": {
+    "en": "craving",
+    "pt-BR": "anseio / desejo compulsivo"
+  },
+  "description": "The Second Noble Truth — the origin of suffering. Taṇhā is compulsive craving arising from contact between sense faculties and sense objects, conditioned by avijjā (ignorance). Three types: kāma-taṇhā (sensual craving), bhava-taṇhā (craving for existence), vibhava-taṇhā (craving for non-existence). Taṇhā conditions upādāna (clinging), which perpetuates the cycle of rebirth.",
+  "first_occurrence": "DS.FF.002",
+  "occurrences": [
+    "DS.FF.002",
+    "DS.FF.006",
+    "DS.FF.008",
+    "DS.DD.006",
+    "ER.CC.009",
+    "ER.CC.010"
+  ],
+  "related": [
+    "avijja",
+    "dukkha",
+    "paticca_samuppada",
+    "sankhara",
+    "nibbana"
+  ],
+  "glossary_refs": [
+    "Tanha",
+    "tanha",
+    "a tanha",
+    "the tanha"
+  ],
+  "schema_version": "1.0"
+}

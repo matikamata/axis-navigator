@@ -1,0 +1,7 @@
+# axis-navigator .gitignore
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.egg-info/
+.env

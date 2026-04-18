@@ -1,0 +1,53 @@
+{
+  "schema": "AXIS-COSMOS-GRAPH-V1",
+  "version": "1.0",
+  "engine": "AXIS-NIDDHI",
+  "description": "Canonical knowledge graph schema for AXIS COSMOS",
+  "invariant": "All graph data flows from AXIS ÑĀṆA. Direct CSL access is prohibited.",
+
+  "node": {
+    "required": ["concept_id", "label", "depth"],
+    "optional": ["citation_count", "centrality_score", "gravity_score", "cluster_id", "type", "pali"],
+    "fields": {
+      "concept_id":        {"type": "string", "description": "Canonical slug — matches semantic/concepts/*.json"},
+      "label":             {"type": "string", "description": "Pāli term display name"},
+      "type":              {"type": "string", "enum": ["dhamma_characteristic","doctrine","mental_factor","practice","attainment"]},
+      "depth":             {"type": "integer", "description": "0=core, 1=direct dependency, 2=extended"},
+      "citation_count":    {"type": "integer", "description": "Number of CSL entries linked to this concept"},
+      "centrality_score":  {"type": "number",  "description": "0–1 graph centrality (normalized degree)"},
+      "gravity_score":     {"type": "number",  "description": "Canonical gravity: citation_density*0.5 + edge_degree*0.3 + path_frequency*0.2"},
+      "cluster_id":        {"type": "string",  "description": "Canonical constellation cluster identifier"}
+    }
+  },
+
+  "edge": {
+    "required": ["source", "target"],
+    "optional": ["relation_type", "weight"],
+    "fields": {
+      "source":        {"type": "string", "description": "concept_id of source node"},
+      "target":        {"type": "string", "description": "concept_id of target node"},
+      "relation_type": {"type": "string", "enum": ["depends_on","co_occurs","path_sequence","causal","cessation"]},
+      "weight":        {"type": "number", "description": "0–1 edge strength"}
+    }
+  },
+
+  "relation_types": {
+    "depends_on":     "Concept requires understanding of target",
+    "co_occurs":      "Concepts frequently appear together in CSL entries",
+    "path_sequence":  "Concepts are adjacent in a canonical study path",
+    "causal":         "Concept is a causal condition for target (paticca samuppada links)",
+    "cessation":      "Concept's cessation leads to target's cessation"
+  },
+
+  "clusters": {
+    "description": "Canonical constellations — concept groups with high co-occurrence",
+    "fields": {
+      "cluster_id":    {"type": "string"},
+      "name":          {"type": "string"},
+      "concepts":      {"type": "array"},
+      "gravity_center":{"type": "string", "description": "concept_id of highest-gravity node in cluster"}
+    }
+  },
+
+  "compatibility": ["AXIS-ACADEMY", "sKullApp", "PitiPath", "AXIS-COSMOS-V2"]
+}

@@ -1,0 +1,33 @@
+{
+  "concept": "anatta",
+  "type": "dhamma_characteristic",
+  "pali": "Anattā",
+  "translations": {
+    "en": "non-self",
+    "pt-BR": "não-eu / ausência de um eu permanente"
+  },
+  "description": "The third of the three characteristics of existence (tilakkhana). Anattā means that no phenomenon — whether material or mental — possesses a permanent, independent self or soul. It is not a doctrine of nihilism but of dependent origination: what appears as 'self' is a conditioned, impermanent process.",
+  "first_occurrence": "IS.BB.001",
+  "occurrences": [
+    "IS.BB.001",
+    "IS.BB.003",
+    "HB.AA.018",
+    "KD.CC.002",
+    "KD.CC.007",
+    "KD.CC.008",
+    "DS.FF.001"
+  ],
+  "related": [
+    "anicca",
+    "dukkha",
+    "tilakkhana",
+    "paticca_samuppada",
+    "nibbana"
+  ],
+  "glossary_refs": [
+    "anatta",
+    "anattānu",
+    "anattānupassanā"
+  ],
+  "schema_version": "1.0"
+}

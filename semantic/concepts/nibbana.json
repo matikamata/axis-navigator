@@ -1,0 +1,31 @@
+{
+  "concept": "nibbana",
+  "type": "attainment",
+  "pali": "Nibbāna",
+  "translations": {
+    "en": "liberation / cessation",
+    "pt-BR": "Nibbāna / libertação"
+  },
+  "description": "The unconditioned — the cessation of suffering, craving, and ignorance. Not annihilation but the permanent cessation of the conditioned. Realized through the Noble Eightfold Path at the moment of phala. Permanent, peaceful, beyond the three characteristics.",
+  "first_occurrence": "BD.HH.007",
+  "occurrences": [
+    "BD.HH.007",
+    "BD.JJ.001",
+    "BM.CC.005",
+    "BD.II.003",
+    "BD.II.006",
+    "BM.DD.005"
+  ],
+  "related": [
+    "magga",
+    "phala",
+    "dukkha",
+    "tilakkhana",
+    "tanha"
+  ],
+  "glossary_refs": [
+    "Nibbāna",
+    "nibbāna"
+  ],
+  "schema_version": "1.0"
+}

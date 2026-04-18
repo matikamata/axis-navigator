@@ -1,0 +1,37 @@
+{
+  "concept": "magga",
+  "type": "practice",
+  "pali": "Ariya Aṭṭhaṅgika Magga",
+  "translations": {
+    "en": "Noble Eightfold Path",
+    "pt-BR": "Nobre Caminho Óctuplo"
+  },
+  "description": "The Fourth Noble Truth — the path leading to the cessation of suffering. The Noble Eightfold Path comprises: Right View, Right Intention, Right Speech, Right Action, Right Livelihood, Right Effort, Right Mindfulness, Right Samādhi. Magga (path consciousness) arises at the moment of path attainment; phala (fruition) follows immediately. There are four magga levels corresponding to the four stages of awakening.",
+  "first_occurrence": "TL.BB.006",
+  "occurrences": [
+    "TL.BB.006",
+    "BD.II.006",
+    "BD.JJ.001",
+    "BM.DD.005",
+    "LD.AA.010",
+    "LD.EE.001"
+  ],
+  "related": [
+    "phala",
+    "nibbana",
+    "dukkha",
+    "tilakkhana",
+    "paticca_samuppada"
+  ],
+  "glossary_refs": [
+    "Magga",
+    "magga",
+    "ariya aṭṭhaṅgika magga",
+    "ariya magga",
+    "magga citta",
+    "Magga Phala",
+    "Arahattamagga",
+    "Anāgāmimagga"
+  ],
+  "schema_version": "1.0"
+}

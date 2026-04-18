@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "corpus": "puredhamma",
+  "paths": {
+    "BEGINNER_PATH": {
+      "id": "BEGINNER_PATH",
+      "title": {
+        "en": "Three Marks of Existence",
+        "pt-BR": "Os Três Características da Existência"
+      },
+      "description": "Foundation: understand the three characteristics that mark all conditioned phenomena.",
+      "level": "beginner",
+      "sequence": [
+        {
+          "step": 1,
+          "concept": "dukkha",
+          "note": "Begin with suffering — the problem to be solved"
+        },
+        {
+          "step": 2,
+          "concept": "anicca",
+          "note": "Impermanence as the root of suffering"
+        },
+        {
+          "step": 3,
+          "concept": "anatta",
+          "note": "Non-self — what the 'I' actually is"
+        },
+        {
+          "step": 4,
+          "concept": "tilakkhana",
+          "note": "Synthesis: the three marks as a unified framework"
+        }
+      ]
+    },
+    "DEPENDENT_ORIGINATION_PATH": {
+      "id": "DEPENDENT_ORIGINATION_PATH",
+      "title": {
+        "en": "Dependent Origination",
+        "pt-BR": "Originação Dependente"
+      },
+      "description": "Intermediate: trace how suffering arises through the chain of conditioned links.",
+      "level": "intermediate",
+      "sequence": [
+        {
+          "step": 1,
+          "concept": "avijja",
+          "note": "Ignorance — the root condition"
+        },
+        {
+          "step": 2,
+          "concept": "sankhara",
+          "note": "Volitional formations conditioned by ignorance"
+        },
+        {
+          "step": 3,
+          "concept": "tanha",
+          "note": "Craving — the proximate origin of suffering"
+        },
+        {
+          "step": 4,
+          "concept": "paticca_samuppada",
+          "note": "The full twelve-fold chain"
+        }
+      ]
+    },
+    "LIBERATION_PATH": {
+      "id": "LIBERATION_PATH",
+      "title": {
+        "en": "Path to Liberation",
+        "pt-BR": "Caminho para a Libertação"
+      },
+      "description": "Advanced: understand the path, fruition, and liberation.",
+      "level": "advanced",
+      "sequence": [
+        {
+          "step": 1,
+          "concept": "magga",
+          "note": "The Noble Eightfold Path — the method"
+        },
+        {
+          "step": 2,
+          "concept": "phala",
+          "note": "Fruition — the moment of attainment"
+        },
+        {
+          "step": 3,
+          "concept": "nibbana",
+          "note": "Nibbāna — the unconditioned goal"
+        }
+      ]
+    }
+  }
+}
