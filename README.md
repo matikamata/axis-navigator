@@ -83,7 +83,7 @@ Each concept node contains:
 
 🌐 **https://niddhi.netlify.app**
 
-Original corpus: **https://puredhamma.net** (Prof. Lal Dhammajoti, Ph.D.)
+Original corpus: **https://puredhamma.net**
 
 ---
 

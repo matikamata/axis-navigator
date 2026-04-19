@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -20,14 +25,17 @@
         /* --- HEADER --- */
         .app-header {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(180deg, rgba(10,10,20,0.95) 0%, rgba(10,10,20,0) 100%);
+            background: linear-gradient(180deg, rgba(10, 10, 20, 0.95) 0%, rgba(10, 10, 20, 0) 100%);
         }
+
         .logo {
             font-weight: 800;
             font-size: 1.1rem;
@@ -36,25 +44,38 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .logo small { font-weight: 300; opacity: 0.6; font-size: 0.7rem; letter-spacing: 0.04em; }
+
+        .logo small {
+            font-weight: 300;
+            opacity: 0.6;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
         .path-tabs {
             display: flex;
             gap: 0.5rem;
         }
+
         .path-tab {
             padding: 0.4rem 1rem;
             border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
             color: #aaa;
             font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.25s ease;
             font-family: inherit;
         }
-        .path-tab:hover { border-color: rgba(167,139,250,0.4); color: #fff; }
+
+        .path-tab:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #fff;
+        }
+
         .path-tab.active {
-            background: rgba(167,139,250,0.15);
+            background: rgba(167, 139, 250, 0.15);
             border-color: #a78bfa;
             color: #e0d4fc;
         }
@@ -62,8 +83,10 @@
         /* --- CANVAS --- */
         #cosmos {
             position: absolute;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
         }
 
         /* --- CONCEPT PANEL --- */
@@ -73,39 +96,49 @@
             top: 0;
             width: 400px;
             height: 100vh;
-            background: rgba(15,15,25,0.96);
+            background: rgba(15, 15, 25, 0.96);
             backdrop-filter: blur(24px);
-            border-left: 1px solid rgba(167,139,250,0.15);
+            border-left: 1px solid rgba(167, 139, 250, 0.15);
             padding: 5rem 2rem 2rem;
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;
             z-index: 90;
         }
-        .concept-panel.open { right: 0; }
+
+        .concept-panel.open {
+            right: 0;
+        }
+
         .concept-panel h2 {
             font-size: 1.6rem;
             font-weight: 800;
             margin-bottom: 0.3rem;
         }
+
         .concept-pali {
             font-size: 0.85rem;
             color: #a78bfa;
             font-style: italic;
             margin-bottom: 1.5rem;
         }
+
         .concept-type {
             display: inline-block;
             padding: 0.2rem 0.8rem;
             border-radius: 999px;
-            background: rgba(167,139,250,0.1);
-            border: 1px solid rgba(167,139,250,0.25);
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.25);
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: #c4b5fd;
             margin-bottom: 1.5rem;
         }
-        .panel-section { margin-bottom: 1.5rem; }
+
+        .panel-section {
+            margin-bottom: 1.5rem;
+        }
+
         .panel-section h3 {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -113,25 +146,31 @@
             color: #888;
             margin-bottom: 0.6rem;
         }
+
         .edge-pill {
             display: inline-block;
             padding: 0.25rem 0.7rem;
             margin: 0.2rem;
             border-radius: 999px;
-            background: rgba(125,211,252,0.08);
-            border: 1px solid rgba(125,211,252,0.2);
+            background: rgba(125, 211, 252, 0.08);
+            border: 1px solid rgba(125, 211, 252, 0.2);
             color: #7dd3fc;
             font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .edge-pill:hover { background: rgba(125,211,252,0.2); transform: scale(1.05); }
+
+        .edge-pill:hover {
+            background: rgba(125, 211, 252, 0.2);
+            transform: scale(1.05);
+        }
+
         .citation-card {
             display: block;
             padding: 0.6rem 0.8rem;
             margin-bottom: 0.4rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 8px;
             font-size: 0.78rem;
             line-height: 1.4;
@@ -139,37 +178,64 @@
             text-decoration: none;
             cursor: pointer;
         }
+
         .citation-card:hover {
-            border-color: rgba(167,139,250,0.4);
-            background: rgba(167,139,250,0.06);
+            border-color: rgba(167, 139, 250, 0.4);
+            background: rgba(167, 139, 250, 0.06);
             transform: translateX(4px);
         }
+
         .citation-pdpn {
             font-family: 'Courier New', monospace;
             font-size: 0.7rem;
             color: #a78bfa;
         }
+
         .citation-title { color: #ccc; margin-left: 0.4rem; }
         .citation-arrow { float: right; color: #555; font-size: 0.9rem; }
+
+        /* --- LANG TOGGLE --- */
         .lang-toggle {
-            display: flex;
-            gap: 0;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.1);
-            overflow: hidden;
+            display: flex; gap: 0; border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.1); overflow: hidden;
         }
         .lang-btn {
-            padding: 0.35rem 0.7rem;
-            font-size: 0.7rem;
-            cursor: pointer;
-            background: rgba(255,255,255,0.04);
-            color: #888;
-            border: none;
-            font-family: inherit;
-            transition: all 0.2s;
+            padding: 0.35rem 0.7rem; font-size: 0.7rem; cursor: pointer;
+            background: rgba(255,255,255,0.04); color: #888;
+            border: none; font-family: inherit; transition: all 0.2s;
         }
         .lang-btn.active { background: rgba(167,139,250,0.2); color: #e0d4fc; }
-        .lang-btn:hover { color: #fff; }
+
+        /* --- SEARCH --- */
+        .search-box {
+            padding: 0.35rem 0.8rem; border-radius: 999px; font-size: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04);
+            color: #ccc; font-family: inherit; width: 140px; outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box:focus { border-color: #a78bfa; }
+
+        /* --- STUDY PROGRESS --- */
+        .studied-badge {
+            display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px;
+            background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);
+            color: #34d399; font-size: 0.65rem; cursor: pointer; margin-top: 0.8rem;
+            transition: all 0.2s;
+        }
+        .studied-badge:hover { background: rgba(52,211,153,0.25); }
+        .studied-badge.done { background: #34d399; color: #0a0a14; }
+        .progress-bar-wrap {
+            position: fixed; bottom: 5.5rem; left: 50%; transform: translateX(-50%);
+            width: 260px; height: 4px; background: rgba(255,255,255,0.06);
+            border-radius: 999px; z-index: 81; opacity: 0; transition: opacity 0.4s;
+        }
+        .progress-bar-wrap.visible { opacity: 1; }
+        .progress-bar-fill {
+            height: 100%; border-radius: 999px;
+            background: linear-gradient(90deg, #a78bfa, #34d399);
+            transition: width 0.4s ease;
+        }
+
         .close-panel {
             position: absolute;
             top: 1.2rem;
@@ -181,7 +247,10 @@
             cursor: pointer;
             transition: color 0.2s;
         }
-        .close-panel:hover { color: #fff; }
+
+        .close-panel:hover {
+            color: #fff;
+        }
 
         /* --- LEARNING PATH OVERLAY --- */
         .path-overlay {
@@ -197,15 +266,22 @@
             pointer-events: none;
             transition: opacity 0.4s ease;
         }
-        .path-overlay.visible { opacity: 1; pointer-events: all; }
+
+        .path-overlay.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         .path-step {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.3rem;
         }
+
         .path-node {
-            width: 42px; height: 42px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -214,18 +290,29 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.25s ease;
-            border: 2px solid rgba(167,139,250,0.3);
-            background: rgba(167,139,250,0.08);
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            background: rgba(167, 139, 250, 0.08);
             color: #c4b5fd;
         }
-        .path-node:hover { transform: scale(1.15); border-color: #a78bfa; }
-        .path-node.current { background: #a78bfa; color: #0a0a14; border-color: #a78bfa; }
+
+        .path-node:hover {
+            transform: scale(1.15);
+            border-color: #a78bfa;
+        }
+
+        .path-node.current {
+            background: #a78bfa;
+            color: #0a0a14;
+            border-color: #a78bfa;
+        }
+
         .path-arrow {
             width: 30px;
             text-align: center;
-            color: rgba(167,139,250,0.3);
+            color: rgba(167, 139, 250, 0.3);
             font-size: 0.8rem;
         }
+
         .path-label {
             font-size: 0.6rem;
             color: #888;
@@ -239,7 +326,9 @@
         /* --- FOOTER INFO --- */
         .info-bar {
             position: fixed;
-            bottom: 0; left: 0; right: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             padding: 0.5rem 2rem;
             font-size: 0.65rem;
             color: #444;
@@ -248,375 +337,424 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="app-header">
-    <div class="logo">AXIS·NAVIGATOR <small>Concept Cosmos v0.2</small></div>
-    <div class="path-tabs">
-        <button class="path-tab" data-path="none" onclick="selectPath('none')">Free Explore</button>
-        <button class="path-tab" data-path="BEGINNER_PATH" onclick="selectPath('BEGINNER_PATH')">🟢 Beginner</button>
-        <button class="path-tab" data-path="DEPENDENT_ORIGINATION_PATH" onclick="selectPath('DEPENDENT_ORIGINATION_PATH')">🟡 Intermediate</button>
-        <button class="path-tab" data-path="LIBERATION_PATH" onclick="selectPath('LIBERATION_PATH')">🔴 Advanced</button>
-        <div class="lang-toggle">
-            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
-            <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">🇧🇷 PT</button>
+    <div class="app-header">
+        <div class="logo">AXIS·NAVIGATOR <small>Concept Cosmos v0.3</small></div>
+        <div class="path-tabs">
+            <input class="search-box" type="text" placeholder="🔍 Search concept..." oninput="searchConcept(this.value)">
+            <button class="path-tab" data-path="none" onclick="selectPath('none')">Free Explore</button>
+            <button class="path-tab" data-path="BEGINNER_PATH" onclick="selectPath('BEGINNER_PATH')">🟢 Beginner</button>
+            <button class="path-tab" data-path="DEPENDENT_ORIGINATION_PATH" onclick="selectPath('DEPENDENT_ORIGINATION_PATH')">🟡 Intermediate</button>
+            <button class="path-tab" data-path="LIBERATION_PATH" onclick="selectPath('LIBERATION_PATH')">🔴 Advanced</button>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇺🇸</button>
+                <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">🇧🇷</button>
+            </div>
         </div>
     </div>
-</div>
 
-<canvas id="cosmos"></canvas>
+    <canvas id="cosmos"></canvas>
 
-<div class="concept-panel" id="panel">
-    <button class="close-panel" onclick="closePanel()">✕</button>
-    <h2 id="panel-label"></h2>
-    <div class="concept-pali" id="panel-pali"></div>
-    <span class="concept-type" id="panel-type"></span>
-    <div class="panel-section">
-        <h3 id="lbl-connected">Connected Concepts</h3>
-        <div id="panel-edges"></div>
+    <div class="concept-panel" id="panel">
+        <button class="close-panel" onclick="closePanel()">✕</button>
+        <h2 id="panel-label"></h2>
+        <div class="concept-pali" id="panel-pali"></div>
+        <span class="concept-type" id="panel-type"></span>
+        <div class="panel-section">
+            <h3 id="lbl-connected">Connected Concepts</h3>
+            <div id="panel-edges"></div>
+        </div>
+        <div class="panel-section">
+            <h3 id="lbl-citations">Read on AXIS-NIDDHI ↗</h3>
+            <div id="panel-citations"></div>
+        </div>
+        <div id="panel-progress"></div>
     </div>
-    <div class="panel-section">
-        <h3 id="lbl-citations">Read on AXIS-NIDDHI ↗</h3>
-        <div id="panel-citations"></div>
+
+    <div class="progress-bar-wrap" id="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    <div class="path-overlay" id="path-overlay"></div>
+
+    <div class="info-bar">
+        <span>Click a node to explore · Select a path to follow the guided study sequence</span>
+        <span>AXIS-NIDDHI Ecosystem — github.com/matikamata</span>
     </div>
-</div>
 
-<div class="path-overlay" id="path-overlay"></div>
-
-<div class="info-bar">
-    <span>Click a node to explore · Select a path to follow the guided learning sequence</span>
-    <span>AXIS-NIDDHI Ecosystem — github.com/matikamata</span>
-</div>
-
-<script>
-// ── DATA ────────────────────────────────────────────────────────────────────
-const conceptMap = {
-    "anicca":             { pali: "Anicca", type: "dhamma_characteristic", label: { en: "Cannot be maintained to one's satisfaction", pt: "Não pode ser mantido conforme desejado" }, edges: ["dukkha","anatta","tilakkhana","sankhara"], citations: [{pdpn:"DD.AA.006",t:"Anicca Vata Sankhara"},{pdpn:"DS.KK.002",t:"Second Law of Thermodynamics is Part of Anicca"},{pdpn:"IS.BB.003",t:"Anicca Nature — Chasing Worldly Pleasures is Pointless"}] },
-    "dukkha":             { pali: "Dukkha", type: "dhamma_characteristic", label: { en: "Unsatisfactoriness / Inability to maintain", pt: "Insatisfatoriedade" }, edges: ["anicca","anatta","tilakkhana","tanha","nibbana"], citations: [{pdpn:"BD.AA.009",t:"First Noble Truth is Suffering"},{pdpn:"BD.BB.005",t:"Sensual Pleasures — The Hidden Suffering"},{pdpn:"TL.BB.006",t:"Four Noble Truths — Recipe for Problem Solving"}] },
-    "anatta":             { pali: "Anattā", type: "dhamma_characteristic", label: { en: "Helplessness / No refuge", pt: "Desamparo / Sem refúgio" }, edges: ["anicca","dukkha","tilakkhana"], citations: [{pdpn:"IS.BB.001",t:"Does Anattā Refer to a Self?"},{pdpn:"HB.AA.018",t:"Misinterpretation by Early European Scholars"}] },
-    "tilakkhana":         { pali: "Tilakkhaṇa", type: "doctrine", label: { en: "Three Characteristics", pt: "Três Características" }, edges: ["anicca","dukkha","anatta"], citations: [{pdpn:"KD.BB.002",t:"Noble Truths, Paṭicca Samuppāda, Tilakkhaṇa"},{pdpn:"KD.BB.003",t:"Key Relationships"}] },
-    "paticca_samuppada":  { pali: "Paṭicca Samuppāda", type: "doctrine", label: { en: "Dependent Origination", pt: "Originação Dependente" }, edges: ["tanha","avijja","dukkha","nibbana"], citations: [{pdpn:"DS.FF.001",t:"Paṭicca Samuppāda — Not Self or No Self"},{pdpn:"DS.FF.003",t:"Self Exists Due to Avijjā"},{pdpn:"KD.BB.002",t:"Noble Truths & Paṭicca Samuppāda"}] },
-    "nibbana":            { pali: "Nibbāna", type: "attainment", label: { en: "Liberation", pt: "Nibbāna" }, edges: ["magga","dukkha","paticca_samuppada","tilakkhana"], citations: [{pdpn:"BD.HH.007",t:"Nibbāna in the Big Picture"},{pdpn:"BD.II.003",t:"Jhāna Stages of Nibbāna"},{pdpn:"BD.JJ.001",t:"Four Stages in Attaining Nibbāna"}] },
-    "tanha":              { pali: "Taṇhā", type: "mental_factor", label: { en: "Craving / Attachment via distorted view", pt: "Apego via visão distorcida" }, edges: ["dukkha","paticca_samuppada","avijja"], citations: [{pdpn:"DS.FF.002",t:"Taṇhā — Origin of Suffering"},{pdpn:"DS.FF.008",t:"Cravings Lead to Upādāna to Suffering"}] },
-    "avijja":             { pali: "Avijjā", type: "mental_factor", label: { en: "Ignorance of the true nature (Tilakkhaṇa)", pt: "Ignorância da verdadeira natureza" }, edges: ["tanha","paticca_samuppada","tilakkhana"], citations: [{pdpn:"DS.FF.003",t:"Self Exists Due to Avijjā"},{pdpn:"TL.BB.001",t:"The Basics"}] },
-    "magga":              { pali: "Magga", type: "practice", label: { en: "Noble Eightfold Path", pt: "Nobre Caminho Óctuplo" }, edges: ["nibbana","dukkha","tilakkhana"], citations: [{pdpn:"BD.II.006",t:"Procedures for Magga Phala"},{pdpn:"BD.JJ.001",t:"Four Stages in Attaining Nibbāna"},{pdpn:"BM.DD.005",t:"Samādhi, Jhāna, Magga Phala"}] },
-    "sankhara":           { pali: "Saṅkhāra", type: "doctrine", label: { en: "Volitional Formations", pt: "Saṅkhāra" }, edges: ["anicca","paticca_samuppada","avijja"], citations: [{pdpn:"DD.AA.006",t:"Anicca Vata Sankhara"},{pdpn:"TL.BB.001",t:"The Basics"}] }
-};
-
-const studyPaths = {
-    "BEGINNER_PATH": { title: "Three Marks of Existence", level: "beginner", sequence: ["dukkha","anicca","anatta","tilakkhana"] },
-    "DEPENDENT_ORIGINATION_PATH": { title: "Dependent Origination", level: "intermediate", sequence: ["avijja","sankhara","tanha","paticca_samuppada"] },
-    "LIBERATION_PATH": { title: "Path to Liberation", level: "advanced", sequence: ["magga","phala","nibbana"] }
-};
-
-const typeColors = {
-    dhamma_characteristic: { fill: "#7dd3fc", glow: "rgba(125,211,252,%a%)" },
-    doctrine:              { fill: "#a78bfa", glow: "rgba(167,139,250,%a%)" },
-    practice:              { fill: "#34d399", glow: "rgba(52,211,153,%a%)" },
-    attainment:            { fill: "#fbbf24", glow: "rgba(251,191,36,%a%)" },
-    mental_factor:         { fill: "#f87171", glow: "rgba(248,113,113,%a%)" }
-};
-
-// ── CONFIG ──────────────────────────────────────────────────────────────────
-const NIDDHI_BASE = 'https://niddhi.netlify.app/pages/';
-let currentLang = 'en';
-
-// ── CANVAS STATE ────────────────────────────────────────────────────────────
-const canvas = document.getElementById('cosmos');
-const ctx = canvas.getContext('2d');
-let W, H;
-let nodes = [];
-let selectedNode = null;
-let activePath = 'none';
-let hoverNode = null;
-let mouse = { x: -1000, y: -1000 };
-let stars = [];
-
-function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-    initStars();
-    layoutNodes();
-}
-
-function initStars() {
-    stars = [];
-    for (let i = 0; i < 200; i++) {
-        stars.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.2, a: Math.random() * 0.5 + 0.1, speed: Math.random() * 0.003 + 0.001 });
-    }
-}
-
-function layoutNodes() {
-    const keys = Object.keys(conceptMap);
-    const cx = W * 0.45, cy = H * 0.5;
-    const rx = Math.min(W, H) * 0.3;
-    const ry = rx * 0.75;
-    nodes = keys.map((key, i) => {
-        const angle = (i / keys.length) * Math.PI * 2 - Math.PI / 2;
-        return {
-            key,
-            x: cx + Math.cos(angle) * rx + (Math.random() - 0.5) * 40,
-            y: cy + Math.sin(angle) * ry + (Math.random() - 0.5) * 30,
-            vx: 0, vy: 0,
-            r: 28,
-            data: conceptMap[key]
+    <script>
+        // ── DATA ────────────────────────────────────────────────────────────────────
+        const conceptMap = {
+            "anicca": { pali: "Anicca", type: "dhamma_characteristic", label: { en: "Cannot be maintained to one's satisfaction", pt: "Não pode ser mantido conforme desejado" }, edges: ["dukkha", "anatta", "tilakkhana", "sankhara"], citations: [{ pdpn: "DD.AA.006", t: "Anicca Vata Sankhara" }, { pdpn: "DS.KK.002", t: "Second Law of Thermodynamics is Part of Anicca" }, { pdpn: "IS.BB.003", t: "Anicca Nature — Chasing Worldly Pleasures is Pointless" }] },
+            "dukkha": { pali: "Dukkha", type: "dhamma_characteristic", label: { en: "Unsatisfactoriness / Inability to maintain", pt: "Insatisfatoriedade" }, edges: ["anicca", "anatta", "tilakkhana", "tanha", "nibbana"], citations: [{ pdpn: "BD.AA.009", t: "First Noble Truth is Suffering" }, { pdpn: "BD.BB.005", t: "Sensual Pleasures — The Hidden Suffering" }, { pdpn: "TL.BB.006", t: "Four Noble Truths — Recipe for Problem Solving" }] },
+            "anatta": { pali: "Anattā", type: "dhamma_characteristic", label: { en: "Helplessness / No refuge", pt: "Desamparo / Sem refúgio" }, edges: ["anicca", "dukkha", "tilakkhana"], citations: [{ pdpn: "IS.BB.001", t: "Does Anattā Refer to a Self?" }, { pdpn: "HB.AA.018", t: "Misinterpretation by Early European Scholars" }] },
+            "tilakkhana": { pali: "Tilakkhaṇa", type: "doctrine", label: { en: "Three Characteristics", pt: "Três Características" }, edges: ["anicca", "dukkha", "anatta"], citations: [{ pdpn: "KD.BB.002", t: "Noble Truths, Paṭicca Samuppāda, Tilakkhaṇa" }, { pdpn: "KD.BB.003", t: "Key Relationships" }] },
+            "paticca_samuppada": { pali: "Paṭicca Samuppāda", type: "doctrine", label: { en: "Dependent Origination", pt: "Originação Dependente" }, edges: ["tanha", "avijja", "dukkha", "nibbana"], citations: [{ pdpn: "DS.FF.001", t: "Paṭicca Samuppāda — Not Self or No Self" }, { pdpn: "DS.FF.003", t: "Self Exists Due to Avijjā" }, { pdpn: "KD.BB.002", t: "Noble Truths & Paṭicca Samuppāda" }] },
+            "nibbana": { pali: "Nibbāna", type: "attainment", label: { en: "Liberation", pt: "Nibbāna" }, edges: ["magga", "dukkha", "paticca_samuppada", "tilakkhana"], citations: [{ pdpn: "BD.HH.007", t: "Nibbāna in the Big Picture" }, { pdpn: "BD.II.003", t: "Jhāna Stages of Nibbāna" }, { pdpn: "BD.JJ.001", t: "Four Stages in Attaining Nibbāna" }] },
+            "tanha": { pali: "Taṇhā", type: "mental_factor", label: { en: "Craving / Attachment via distorted view", pt: "Apego via visão distorcida" }, edges: ["dukkha", "paticca_samuppada", "avijja"], citations: [{ pdpn: "DS.FF.002", t: "Taṇhā — Origin of Suffering" }, { pdpn: "DS.FF.008", t: "Cravings Lead to Upādāna to Suffering" }] },
+            "avijja": { pali: "Avijjā", type: "mental_factor", label: { en: "Ignorance of the true nature (Tilakkhaṇa)", pt: "Ignorância da verdadeira natureza" }, edges: ["tanha", "paticca_samuppada", "tilakkhana"], citations: [{ pdpn: "DS.FF.003", t: "Self Exists Due to Avijjā" }, { pdpn: "TL.BB.001", t: "The Basics" }] },
+            "magga": { pali: "Magga", type: "practice", label: { en: "Noble Eightfold Path", pt: "Nobre Caminho Óctuplo" }, edges: ["nibbana", "dukkha", "tilakkhana"], citations: [{ pdpn: "BD.II.006", t: "Procedures for Magga Phala" }, { pdpn: "BD.JJ.001", t: "Four Stages in Attaining Nibbāna" }, { pdpn: "BM.DD.005", t: "Samādhi, Jhāna, Magga Phala" }] },
+            "sankhara": { pali: "Saṅkhāra", type: "doctrine", label: { en: "Volitional Formations", pt: "Saṅkhāra" }, edges: ["anicca", "paticca_samuppada", "avijja"], citations: [{ pdpn: "DD.AA.006", t: "Anicca Vata Sankhara" }, { pdpn: "TL.BB.001", t: "The Basics" }] }
         };
-    });
-}
 
-// ── PHYSICS (gentle spring) ─────────────────────────────────────────────────
-function tick() {
-    for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[j].x - nodes[i].x;
-            const dy = nodes[j].y - nodes[i].y;
-            const dist = Math.sqrt(dx*dx + dy*dy) || 1;
-            // repulsion
-            if (dist < 160) {
-                const f = (160 - dist) * 0.003;
-                nodes[i].vx -= (dx / dist) * f;
-                nodes[i].vy -= (dy / dist) * f;
-                nodes[j].vx += (dx / dist) * f;
-                nodes[j].vy += (dy / dist) * f;
+        const studyPaths = {
+            "BEGINNER_PATH": { title: "Three Marks of Existence", level: "beginner", sequence: ["dukkha", "anicca", "anatta", "tilakkhana"] },
+            "DEPENDENT_ORIGINATION_PATH": { title: "Dependent Origination", level: "intermediate", sequence: ["avijja", "sankhara", "tanha", "paticca_samuppada"] },
+            "LIBERATION_PATH": { title: "Path to Liberation", level: "advanced", sequence: ["magga", "phala", "nibbana"] }
+        };
+
+        const typeColors = {
+            dhamma_characteristic: { fill: "#7dd3fc", glow: "rgba(125,211,252,%a%)" },
+            doctrine: { fill: "#a78bfa", glow: "rgba(167,139,250,%a%)" },
+            practice: { fill: "#34d399", glow: "rgba(52,211,153,%a%)" },
+            attainment: { fill: "#fbbf24", glow: "rgba(251,191,36,%a%)" },
+            mental_factor: { fill: "#f87171", glow: "rgba(248,113,113,%a%)" }
+        };
+
+        // ── CONFIG ──────────────────────────────────────────────────────────────
+        const NIDDHI_BASE = 'https://niddhi.netlify.app/pages/';
+        let currentLang = localStorage.getItem('axis_lang') || 'en';
+        let studiedConcepts = JSON.parse(localStorage.getItem('axis_studied') || '[]');
+
+        // ── CANVAS STATE ────────────────────────────────────────────────────────────
+        const canvas = document.getElementById('cosmos');
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        let nodes = [];
+        let selectedNode = null;
+        let activePath = 'none';
+        let hoverNode = null;
+        let mouse = { x: -1000, y: -1000 };
+        let stars = [];
+
+        function resize() {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            initStars();
+            layoutNodes();
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < 200; i++) {
+                stars.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.2, a: Math.random() * 0.5 + 0.1, speed: Math.random() * 0.003 + 0.001 });
             }
         }
-        // edges as springs
-        for (const edgeKey of nodes[i].data.edges) {
-            const target = nodes.find(n => n.key === edgeKey);
-            if (!target) continue;
-            const dx = target.x - nodes[i].x;
-            const dy = target.y - nodes[i].y;
-            const dist = Math.sqrt(dx*dx + dy*dy) || 1;
-            const ideal = 200;
-            const f = (dist - ideal) * 0.001;
-            nodes[i].vx += (dx / dist) * f;
-            nodes[i].vy += (dy / dist) * f;
-            target.vx -= (dx / dist) * f;
-            target.vy -= (dy / dist) * f;
+
+        function layoutNodes() {
+            const keys = Object.keys(conceptMap);
+            const cx = W * 0.45, cy = H * 0.5;
+            const rx = Math.min(W, H) * 0.3;
+            const ry = rx * 0.75;
+            nodes = keys.map((key, i) => {
+                const angle = (i / keys.length) * Math.PI * 2 - Math.PI / 2;
+                return {
+                    key,
+                    x: cx + Math.cos(angle) * rx + (Math.random() - 0.5) * 40,
+                    y: cy + Math.sin(angle) * ry + (Math.random() - 0.5) * 30,
+                    vx: 0, vy: 0,
+                    r: 28,
+                    data: conceptMap[key]
+                };
+            });
         }
-        // damping + boundary
-        nodes[i].vx *= 0.92;
-        nodes[i].vy *= 0.92;
-        nodes[i].x += nodes[i].vx;
-        nodes[i].y += nodes[i].vy;
-        nodes[i].x = Math.max(60, Math.min(W - 60, nodes[i].x));
-        nodes[i].y = Math.max(80, Math.min(H - 60, nodes[i].y));
-    }
-}
 
-// ── DRAW ────────────────────────────────────────────────────────────────────
-function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    // Stars
-    const t = performance.now();
-    for (const s of stars) {
-        const alpha = s.a + Math.sin(t * s.speed) * 0.2;
-        ctx.fillStyle = `rgba(255,255,255,${Math.max(0, alpha)})`;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-    }
-
-    // Edges
-    for (const node of nodes) {
-        for (const edgeKey of node.data.edges) {
-            const target = nodes.find(n => n.key === edgeKey);
-            if (!target) continue;
-
-            const isPathEdge = activePath !== 'none' && isEdgeOnPath(node.key, edgeKey);
-            const isHovered = hoverNode && (hoverNode.key === node.key || hoverNode.key === edgeKey);
-
-            ctx.strokeStyle = isPathEdge
-                ? 'rgba(167,139,250,0.5)'
-                : isHovered
-                    ? 'rgba(255,255,255,0.15)'
-                    : 'rgba(255,255,255,0.04)';
-            ctx.lineWidth = isPathEdge ? 2.5 : 1;
-            ctx.beginPath();
-            ctx.moveTo(node.x, node.y);
-            ctx.lineTo(target.x, target.y);
-            ctx.stroke();
+        // ── PHYSICS (gentle spring) ─────────────────────────────────────────────────
+        function tick() {
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[j].x - nodes[i].x;
+                    const dy = nodes[j].y - nodes[i].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                    // repulsion
+                    if (dist < 160) {
+                        const f = (160 - dist) * 0.003;
+                        nodes[i].vx -= (dx / dist) * f;
+                        nodes[i].vy -= (dy / dist) * f;
+                        nodes[j].vx += (dx / dist) * f;
+                        nodes[j].vy += (dy / dist) * f;
+                    }
+                }
+                // edges as springs
+                for (const edgeKey of nodes[i].data.edges) {
+                    const target = nodes.find(n => n.key === edgeKey);
+                    if (!target) continue;
+                    const dx = target.x - nodes[i].x;
+                    const dy = target.y - nodes[i].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                    const ideal = 200;
+                    const f = (dist - ideal) * 0.001;
+                    nodes[i].vx += (dx / dist) * f;
+                    nodes[i].vy += (dy / dist) * f;
+                    target.vx -= (dx / dist) * f;
+                    target.vy -= (dy / dist) * f;
+                }
+                // damping + boundary
+                nodes[i].vx *= 0.92;
+                nodes[i].vy *= 0.92;
+                nodes[i].x += nodes[i].vx;
+                nodes[i].y += nodes[i].vy;
+                nodes[i].x = Math.max(60, Math.min(W - 60, nodes[i].x));
+                nodes[i].y = Math.max(80, Math.min(H - 60, nodes[i].y));
+            }
         }
-    }
 
-    // Nodes
-    for (const node of nodes) {
-        const colors = typeColors[node.data.type] || typeColors.doctrine;
-        const isSelected = selectedNode && selectedNode.key === node.key;
-        const isHover = hoverNode && hoverNode.key === node.key;
-        const isOnPath = activePath !== 'none' && isNodeOnPath(node.key);
+        // ── DRAW ────────────────────────────────────────────────────────────────────
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
 
-        // Glow
-        const glowAlpha = isSelected ? 0.4 : isHover ? 0.25 : isOnPath ? 0.2 : 0.05;
-        const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.r * 2.5);
-        grad.addColorStop(0, colors.glow.replace('%a%', glowAlpha));
-        grad.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.r * 2.5, 0, Math.PI * 2);
-        ctx.fill();
+            // Stars
+            const t = performance.now();
+            for (const s of stars) {
+                const alpha = s.a + Math.sin(t * s.speed) * 0.2;
+                ctx.fillStyle = `rgba(255,255,255,${Math.max(0, alpha)})`;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
 
-        // Circle
-        const r = isSelected ? node.r * 1.2 : isHover ? node.r * 1.1 : node.r;
-        ctx.fillStyle = isSelected ? colors.fill : isOnPath ? colors.fill : 'rgba(20,20,35,0.9)';
-        ctx.strokeStyle = colors.fill;
-        ctx.lineWidth = isSelected ? 3 : isOnPath ? 2.5 : 1.5;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
+            // Edges
+            for (const node of nodes) {
+                for (const edgeKey of node.data.edges) {
+                    const target = nodes.find(n => n.key === edgeKey);
+                    if (!target) continue;
 
-        // Label
-        ctx.fillStyle = isSelected ? '#0a0a14' : isOnPath ? '#0a0a14' : '#ccc';
-        ctx.font = `${isSelected ? '700' : '600'} 10px Inter, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(node.data.pali, node.x, node.y);
+                    const isPathEdge = activePath !== 'none' && isEdgeOnPath(node.key, edgeKey);
+                    const isHovered = hoverNode && (hoverNode.key === node.key || hoverNode.key === edgeKey);
 
-        // Sublabel (language-aware)
-        const sublabel = currentLang === 'pt' ? node.data.label.pt : node.data.label.en;
-        ctx.fillStyle = isSelected || isOnPath ? 'rgba(10,10,20,0.6)' : 'rgba(255,255,255,0.3)';
-        ctx.font = '300 8px Inter, sans-serif';
-        ctx.fillText(sublabel, node.x, node.y + r + 14);
-    }
+                    ctx.strokeStyle = isPathEdge
+                        ? 'rgba(167,139,250,0.5)'
+                        : isHovered
+                            ? 'rgba(255,255,255,0.15)'
+                            : 'rgba(255,255,255,0.04)';
+                    ctx.lineWidth = isPathEdge ? 2.5 : 1;
+                    ctx.beginPath();
+                    ctx.moveTo(node.x, node.y);
+                    ctx.lineTo(target.x, target.y);
+                    ctx.stroke();
+                }
+            }
 
-    tick();
-    requestAnimationFrame(draw);
-}
+            // Nodes
+            for (const node of nodes) {
+                const colors = typeColors[node.data.type] || typeColors.doctrine;
+                const isSelected = selectedNode && selectedNode.key === node.key;
+                const isHover = hoverNode && hoverNode.key === node.key;
+                const isOnPath = activePath !== 'none' && isNodeOnPath(node.key);
 
-function isNodeOnPath(key) {
-    if (activePath === 'none') return false;
-    const path = studyPaths[activePath];
-    return path && path.sequence.includes(key);
-}
+                // Glow
+                const glowAlpha = isSelected ? 0.4 : isHover ? 0.25 : isOnPath ? 0.2 : 0.05;
+                const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.r * 2.5);
+                grad.addColorStop(0, colors.glow.replace('%a%', glowAlpha));
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.r * 2.5, 0, Math.PI * 2);
+                ctx.fill();
 
-function isEdgeOnPath(a, b) {
-    if (activePath === 'none') return false;
-    const seq = studyPaths[activePath]?.sequence;
-    if (!seq) return false;
-    const ia = seq.indexOf(a), ib = seq.indexOf(b);
-    return ia >= 0 && ib >= 0 && Math.abs(ia - ib) === 1;
-}
+                // Circle
+                const r = isSelected ? node.r * 1.2 : isHover ? node.r * 1.1 : node.r;
+                ctx.fillStyle = isSelected ? colors.fill : isOnPath ? colors.fill : 'rgba(20,20,35,0.9)';
+                ctx.strokeStyle = colors.fill;
+                ctx.lineWidth = isSelected ? 3 : isOnPath ? 2.5 : 1.5;
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
 
-// ── INTERACTION ─────────────────────────────────────────────────────────────
-canvas.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    hoverNode = null;
-    for (const n of nodes) {
-        const dx = e.clientX - n.x, dy = e.clientY - n.y;
-        if (dx*dx + dy*dy < n.r * n.r * 1.5) {
-            hoverNode = n;
-            canvas.style.cursor = 'pointer';
-            return;
+                // Label
+                ctx.fillStyle = isSelected ? '#0a0a14' : isOnPath ? '#0a0a14' : '#ccc';
+                ctx.font = `${isSelected ? '700' : '600'} 10px Inter, sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(node.data.pali, node.x, node.y);
+
+                // Sublabel (language-aware)
+                const sublabel = currentLang === 'pt' ? node.data.label.pt : node.data.label.en;
+                ctx.fillStyle = isSelected || isOnPath ? 'rgba(10,10,20,0.6)' : 'rgba(255,255,255,0.3)';
+                ctx.font = '300 8px Inter, sans-serif';
+                ctx.fillText(sublabel, node.x, node.y + r + 14);
+
+                // Studied checkmark
+                if (studiedConcepts.includes(node.key)) {
+                    ctx.fillStyle = '#34d399';
+                    ctx.font = '700 10px Inter';
+                    ctx.fillText('✓', node.x + r - 2, node.y - r + 4);
+                }
+            }
+
+            tick();
+            requestAnimationFrame(draw);
         }
-    }
-    canvas.style.cursor = 'default';
-});
 
-canvas.addEventListener('click', e => {
-    for (const n of nodes) {
-        const dx = e.clientX - n.x, dy = e.clientY - n.y;
-        if (dx*dx + dy*dy < n.r * n.r * 2) {
-            openPanel(n);
-            return;
+        function isNodeOnPath(key) {
+            if (activePath === 'none') return false;
+            const path = studyPaths[activePath];
+            return path && path.sequence.includes(key);
         }
-    }
-    closePanel();
-});
 
-function openPanel(node) {
-    selectedNode = node;
-    const d = node.data;
-    const label = currentLang === 'pt' ? d.label.pt : d.label.en;
-    const otherLabel = currentLang === 'pt' ? d.label.en : d.label.pt;
-    document.getElementById('panel-label').textContent = label;
-    document.getElementById('panel-pali').textContent = d.pali + ' — ' + otherLabel;
-    document.getElementById('panel-type').textContent = d.type.replace(/_/g, ' ');
+        function isEdgeOnPath(a, b) {
+            if (activePath === 'none') return false;
+            const seq = studyPaths[activePath]?.sequence;
+            if (!seq) return false;
+            const ia = seq.indexOf(a), ib = seq.indexOf(b);
+            return ia >= 0 && ib >= 0 && Math.abs(ia - ib) === 1;
+        }
 
-    // UI language
-    document.getElementById('lbl-connected').textContent = currentLang === 'pt' ? 'Conceitos Conectados' : 'Connected Concepts';
-    document.getElementById('lbl-citations').textContent = currentLang === 'pt' ? 'Ler no AXIS-NIDDHI ↗' : 'Read on AXIS-NIDDHI ↗';
+        // ── INTERACTION ─────────────────────────────────────────────────────────────
+        canvas.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            hoverNode = null;
+            for (const n of nodes) {
+                const dx = e.clientX - n.x, dy = e.clientY - n.y;
+                if (dx * dx + dy * dy < n.r * n.r * 1.5) {
+                    hoverNode = n;
+                    canvas.style.cursor = 'pointer';
+                    return;
+                }
+            }
+            canvas.style.cursor = 'default';
+        });
 
-    const edgesDiv = document.getElementById('panel-edges');
-    edgesDiv.innerHTML = d.edges.map(e => {
-        const cd = conceptMap[e];
-        return cd ? `<span class="edge-pill" onclick="navigateTo('${e}')">${cd.pali}</span>` : '';
-    }).join('');
+        canvas.addEventListener('click', e => {
+            for (const n of nodes) {
+                const dx = e.clientX - n.x, dy = e.clientY - n.y;
+                if (dx * dx + dy * dy < n.r * n.r * 2) {
+                    openPanel(n);
+                    return;
+                }
+            }
+            closePanel();
+        });
 
-    // Citations as clickable links to AXIS-NIDDHI
-    const citDiv = document.getElementById('panel-citations');
-    citDiv.innerHTML = d.citations.map(c => {
-        const url = NIDDHI_BASE + c.pdpn + '/';
-        return `<a class="citation-card" href="${url}" target="_blank" rel="noopener">`
-             + `<span class="citation-pdpn">${c.pdpn}</span>`
-             + `<span class="citation-title"> ${c.t}</span>`
-             + `<span class="citation-arrow">→</span>`
-             + `</a>`;
-    }).join('');
+        function openPanel(node) {
+            selectedNode = node;
+            const d = node.data;
+            const label = currentLang === 'pt' ? d.label.pt : d.label.en;
+            const otherLabel = currentLang === 'pt' ? d.label.en : d.label.pt;
+            document.getElementById('panel-label').textContent = label;
+            document.getElementById('panel-pali').textContent = d.pali + ' — ' + otherLabel;
+            document.getElementById('panel-type').textContent = d.type.replace(/_/g, ' ');
+            document.getElementById('lbl-connected').textContent = currentLang === 'pt' ? 'Conceitos Conectados' : 'Connected Concepts';
+            document.getElementById('lbl-citations').textContent = currentLang === 'pt' ? 'Ler no AXIS-NIDDHI ↗' : 'Read on AXIS-NIDDHI ↗';
 
-    document.getElementById('panel').classList.add('open');
-}
+            const edgesDiv = document.getElementById('panel-edges');
+            edgesDiv.innerHTML = d.edges.map(e => {
+                const cd = conceptMap[e];
+                const check = studiedConcepts.includes(e) ? ' ✓' : '';
+                return cd ? `<span class="edge-pill" onclick="navigateTo('${e}')">${cd.pali}${check}</span>` : '';
+            }).join('');
 
-function setLang(lang) {
-    currentLang = lang;
-    document.querySelectorAll('.lang-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.lang === lang);
-    });
-    // Re-render panel if open
-    if (selectedNode) openPanel(selectedNode);
-}
+            const citDiv = document.getElementById('panel-citations');
+            citDiv.innerHTML = d.citations.map(c => {
+                const url = NIDDHI_BASE + c.pdpn + '/';
+                return `<a class="citation-card" href="${url}" target="_blank" rel="noopener">`
+                     + `<span class="citation-pdpn">${c.pdpn}</span>`
+                     + `<span class="citation-title"> ${c.t}</span>`
+                     + `<span class="citation-arrow">→</span></a>`;
+            }).join('');
 
-function closePanel() {
-    selectedNode = null;
-    document.getElementById('panel').classList.remove('open');
-}
+            // Study progress toggle
+            const isStudied = studiedConcepts.includes(node.key);
+            const btnLabel = isStudied
+                ? (currentLang === 'pt' ? '✓ Estudado' : '✓ Studied')
+                : (currentLang === 'pt' ? 'Marcar como Estudado' : 'Mark as Studied');
+            document.getElementById('panel-progress').innerHTML =
+                `<span class="studied-badge ${isStudied ? 'done' : ''}" onclick="toggleStudied('${node.key}')">${btnLabel}</span>`;
 
-function navigateTo(key) {
-    const node = nodes.find(n => n.key === key);
-    if (node) openPanel(node);
-}
+            document.getElementById('panel').classList.add('open');
+        }
 
-// ── PATH SELECTION ──────────────────────────────────────────────────────────
-function selectPath(pathId) {
-    activePath = pathId;
-    document.querySelectorAll('.path-tab').forEach(t => {
-        t.classList.toggle('active', t.dataset.path === pathId);
-    });
+        function closePanel() {
+            selectedNode = null;
+            document.getElementById('panel').classList.remove('open');
+        }
 
-    const overlay = document.getElementById('path-overlay');
-    if (pathId === 'none') {
-        overlay.classList.remove('visible');
-        return;
-    }
+        function navigateTo(key) {
+            const node = nodes.find(n => n.key === key);
+            if (node) openPanel(node);
+        }
 
-    const path = studyPaths[pathId];
-    if (!path) return;
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('axis_lang', lang);
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+            if (selectedNode) openPanel(selectedNode);
+        }
 
-    let html = '';
-    path.sequence.forEach((concept, i) => {
-        const cd = conceptMap[concept];
-        const label = cd ? cd.pali : concept;
-        html += `<div class="path-step">
-            <div class="path-node" onclick="navigateTo('${concept}')">${i+1}</div>
+        function toggleStudied(key) {
+            const idx = studiedConcepts.indexOf(key);
+            if (idx >= 0) studiedConcepts.splice(idx, 1);
+            else studiedConcepts.push(key);
+            localStorage.setItem('axis_studied', JSON.stringify(studiedConcepts));
+            if (selectedNode) openPanel(selectedNode);
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const bar = document.getElementById('progress-bar');
+            const fill = document.getElementById('progress-fill');
+            if (activePath === 'none') { bar.classList.remove('visible'); return; }
+            const seq = studyPaths[activePath]?.sequence || [];
+            const done = seq.filter(c => studiedConcepts.includes(c)).length;
+            fill.style.width = (done / seq.length * 100) + '%';
+            bar.classList.add('visible');
+        }
+
+        function searchConcept(query) {
+            if (!query || query.length < 2) { hoverNode = null; return; }
+            const q = query.toLowerCase();
+            const found = nodes.find(n =>
+                n.data.pali.toLowerCase().includes(q) ||
+                n.data.label.en.toLowerCase().includes(q) ||
+                n.data.label.pt.toLowerCase().includes(q)
+            );
+            if (found) { hoverNode = found; openPanel(found); }
+        }
+
+        // ── PATH SELECTION ──────────────────────────────────────────────────────────
+        function selectPath(pathId) {
+            activePath = pathId;
+            document.querySelectorAll('.path-tab').forEach(t => {
+                t.classList.toggle('active', t.dataset.path === pathId);
+            });
+
+            const overlay = document.getElementById('path-overlay');
+            if (pathId === 'none') {
+                overlay.classList.remove('visible');
+                return;
+            }
+
+            const path = studyPaths[pathId];
+            if (!path) return;
+
+            let html = '';
+            path.sequence.forEach((concept, i) => {
+                const cd = conceptMap[concept];
+                const label = cd ? cd.pali : concept;
+                html += `<div class="path-step">
+            <div class="path-node" onclick="navigateTo('${concept}')">${i + 1}</div>
             <div class="path-label">${label}</div>
         </div>`;
-        if (i < path.sequence.length - 1) {
-            html += `<div class="path-arrow">→</div>`;
+                if (i < path.sequence.length - 1) {
+                    html += `<div class="path-arrow">→</div>`;
+                }
+            });
+
+            overlay.innerHTML = html;
+            overlay.classList.add('visible');
+            updateProgressBar();
         }
-    });
 
-    overlay.innerHTML = html;
-    overlay.classList.add('visible');
-}
-
-// ── INIT ────────────────────────────────────────────────────────────────────
-window.addEventListener('resize', resize);
-resize();
-selectPath('none');
-document.querySelector('[data-path="none"]').classList.add('active');
-draw();
-</script>
+        // ── INIT ────────────────────────────────────────────────────────────────────
+        window.addEventListener('resize', resize);
+        resize();
+        selectPath('none');
+        document.querySelector('[data-path="none"]').classList.add('active');
+        // Restore lang state
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
+        draw();
+    </script>
 </body>
+
 </html>
