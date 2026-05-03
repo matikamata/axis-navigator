@@ -335,7 +335,45 @@
             display: flex;
             justify-content: space-between;
         }
-    </style>
+        /* --- NANA STATIC PANEL (Wave 2c.4d) --- */
+        .nana-panel-block {
+            margin-top: 1.2rem;
+            padding: 0.7rem 0.9rem;
+            border-radius: 8px;
+            background: rgba(52, 211, 153, 0.06);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+        .nana-label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #34d399;
+            margin-bottom: 0.45rem;
+        }
+        .nana-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            color: #aaa;
+            margin-bottom: 0.5rem;
+        }
+        .nana-meta code { color: #7dd3fc; font-size: 0.7rem; }
+        .nana-keys { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+        .nana-key-pill {
+            padding: 0.15rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            color: #34d399;
+            font-size: 0.68rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        </style>
 </head>
 
 <body>
@@ -371,6 +409,7 @@
             <div id="panel-citations"></div>
         </div>
         <div id="panel-progress"></div>
+        <div id="panel-nana"></div>
     </div>
 
     <div class="progress-bar-wrap" id="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
@@ -414,6 +453,44 @@
         const NIDDHI_BASE = 'https://niddhi.netlify.app/pages/';
         let currentLang = localStorage.getItem('axis_lang') || 'en';
         let studiedConcepts = JSON.parse(localStorage.getItem('axis_studied') || '[]');
+
+        // ── NANA STATIC BRIDGE (Wave 2c.4d) ─────────────────────────────────────
+        // Reads assets/nana/manifest.json if present. Never blocks UI. Never calls APIs.
+        let nanaManifest = null;
+        let nanaManifestStatus = 'not_loaded'; // not_loaded | missing | invalid | unavailable | available
+
+        async function loadNanaManifest() {
+            // Resolve relative to current page — safe for any deploy base path.
+            const manifestUrl = new URL('assets/nana/manifest.json', window.location.href);
+            try {
+                const res = await fetch(manifestUrl.toString());
+                if (!res.ok) {
+                    nanaManifestStatus = 'missing';
+                    console.info('[NANA] manifest not found (HTTP ' + res.status + '). NANA UI disabled.');
+                    return null;
+                }
+                let data;
+                try { data = await res.json(); } catch (_) {
+                    nanaManifestStatus = 'invalid';
+                    console.warn('[NANA] manifest JSON parse failed. NANA UI disabled.');
+                    return null;
+                }
+                if (!data || typeof data.artifacts_by_concept !== 'object') {
+                    nanaManifestStatus = 'invalid';
+                    console.warn('[NANA] manifest missing artifacts_by_concept. NANA UI disabled.');
+                    return null;
+                }
+                nanaManifest = data;
+                nanaManifestStatus = 'available';
+                console.info('[NANA] manifest loaded. Concepts:', Object.keys(data.artifacts_by_concept));
+                return data;
+            } catch (err) {
+                // Network error, CORS, file:// protocol, etc.
+                nanaManifestStatus = 'unavailable';
+                console.info('[NANA] manifest unreachable (offline or CORS). NANA UI disabled.');
+                return null;
+            }
+        }
 
         // ── CANVAS STATE ────────────────────────────────────────────────────────────
         const canvas = document.getElementById('cosmos');
@@ -662,6 +739,45 @@
             document.getElementById('panel-progress').innerHTML =
                 `<span class="studied-badge ${isStudied ? 'done' : ''}" onclick="toggleStudied('${node.key}')">${btnLabel}</span>`;
 
+            // ── NANA STATIC PANEL (Wave 2c.4d) ──────────────────────────────────
+            const nanaSection = document.getElementById('panel-nana');
+            if (nanaSection) {
+                nanaSection.innerHTML = '';
+                if (nanaManifestStatus === 'available' && nanaManifest) {
+                    const conceptId = node.key;
+                    const conceptArtifacts = nanaManifest.artifacts_by_concept
+                        ? nanaManifest.artifacts_by_concept[conceptId]
+                        : null;
+                    if (conceptArtifacts) {
+                        const artifactStatus  = nanaManifest.artifact_status  || '—';
+                        const providerRunType = nanaManifest.provider_run_type || '—';
+                        const displayAllowed  = nanaManifest.display_allowed;
+                        const artifactKeys    = Object.keys(conceptArtifacts);
+
+                        if (displayAllowed === false) {
+                            nanaSection.innerHTML =
+                                '<div class="nana-panel-block">'
+                              + '<span class="nana-label">🧠 NANA</span> '
+                              + 'Artifact present but not display-enabled.'
+                              + '</div>';
+                        } else {
+                            nanaSection.innerHTML =
+                                '<div class="nana-panel-block">'
+                              + '<span class="nana-label">🧠 NANA static artifacts available</span>'
+                              + '<div class="nana-meta">'
+                              + '<span>Concept: <code>' + conceptId + '</code></span>'
+                              + '<span>Status: <code>' + artifactStatus + '</code></span>'
+                              + '<span>Provider: <code>' + providerRunType + '</code></span>'
+                              + '</div>'
+                              + '<div class="nana-keys">' + artifactKeys.map(function(k) {
+                                  return '<span class="nana-key-pill">' + k + '</span>';
+                              }).join('') + '</div>'
+                              + '</div>';
+                        }
+                    }
+                }
+            }
+
             document.getElementById('panel').classList.add('open');
         }
 
@@ -754,6 +870,10 @@
         // Restore lang state
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
         draw();
+        // Wave 2c.4d — non-blocking manifest preload
+        loadNanaManifest().then(function() {
+            if (selectedNode) openPanel(selectedNode);
+        });
     </script>
 </body>
 
