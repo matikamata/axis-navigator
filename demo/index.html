@@ -373,6 +373,78 @@
             font-family: 'Courier New', monospace;
         }
 
+        /* --- NANA ARTIFACT PREVIEW (Wave 2c.4e) --- */
+        .nana-preview-block {
+            margin-top: 0.6rem;
+            padding: 0;
+        }
+        .nana-preview-block summary {
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #7dd3fc;
+            padding: 0.3rem 0;
+            user-select: none;
+        }
+        .nana-preview-block summary:hover { color: #a78bfa; }
+        .nana-artifact-section {
+            margin-top: 0.5rem;
+            padding: 0.5rem 0.7rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 6px;
+            margin-bottom: 0.4rem;
+        }
+        .nana-artifact-section h4 {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            margin-bottom: 0.35rem;
+        }
+        .nana-fixture-badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(251, 191, 36, 0.12);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            color: #fbbf24;
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .nana-artifact-status {
+            font-size: 0.68rem;
+            color: #f87171;
+            margin-bottom: 0.2rem;
+        }
+        .nana-safe-row {
+            display: flex;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-bottom: 0.15rem;
+            align-items: baseline;
+        }
+        .nana-safe-row span:first-child {
+            color: #666;
+            min-width: 5.5rem;
+            flex-shrink: 0;
+        }
+        .nana-safe-row code {
+            color: #7dd3fc;
+            font-size: 0.68rem;
+            word-break: break-all;
+        }
+        .nana-answer-gate {
+            margin-top: 0.4rem;
+            font-size: 0.7rem;
+            color: #555;
+            font-style: italic;
+        }
+
         </style>
 </head>
 
@@ -454,10 +526,151 @@
         let currentLang = localStorage.getItem('axis_lang') || 'en';
         let studiedConcepts = JSON.parse(localStorage.getItem('axis_studied') || '[]');
 
-        // ── NANA STATIC BRIDGE (Wave 2c.4d) ─────────────────────────────────────
-        // Reads assets/nana/manifest.json if present. Never blocks UI. Never calls APIs.
+        // ── NANA STATIC BRIDGE (Wave 2c.4d + 2c.4e) ───────────────────────────────
+        // Reads assets/nana/manifest.json + secondary artifacts. Never calls APIs.
         let nanaManifest = null;
         let nanaManifestStatus = 'not_loaded'; // not_loaded | missing | invalid | unavailable | available
+        let nanaAssetBaseUrl = null;
+        const nanaArtifactCache = new Map();
+
+        function escapeHtml(str) {
+            return String(str === null || str === undefined ? '' : str)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        function resolveNanaArtifactUrl(relPath) {
+            if (!nanaAssetBaseUrl || !relPath) return null;
+            return new URL(relPath, nanaAssetBaseUrl).toString();
+        }
+
+        async function fetchNanaArtifact(relPath) {
+            if (!relPath) return { _status: 'missing' };
+            const url = resolveNanaArtifactUrl(relPath);
+            if (!url) return { _status: 'missing' };
+            if (nanaArtifactCache.has(url)) return nanaArtifactCache.get(url);
+            try {
+                const res = await fetch(url);
+                if (!res.ok) {
+                    const r = { _status: 'missing' };
+                    nanaArtifactCache.set(url, r);
+                    return r;
+                }
+                let data;
+                try { data = await res.json(); } catch (_) {
+                    const r = { _status: 'invalid' };
+                    nanaArtifactCache.set(url, r);
+                    return r;
+                }
+                data._status = 'ok';
+                nanaArtifactCache.set(url, data);
+                return data;
+            } catch (_) {
+                const r = { _status: 'unavailable' };
+                nanaArtifactCache.set(url ? url : relPath, r);
+                return r;
+            }
+        }
+
+        function nanaFixtureBadge(artifactStatus) {
+            if (typeof artifactStatus === 'string' && artifactStatus.includes('fixture_only')) {
+                return '<span class="nana-fixture-badge">⚠ FIXTURE ONLY — not doctrinal</span>';
+            }
+            return '';
+        }
+
+        function nanaStatusRow(label, value) {
+            return '<div class="nana-safe-row"><span>' + escapeHtml(label) + '</span><code>'
+                 + escapeHtml(value) + '</code></div>';
+        }
+
+        function renderNanaProviderSection(d) {
+            if (!d || d._status !== 'ok') {
+                return '<div class="nana-artifact-section"><h4>Provider Run</h4>'
+                     + '<div class="nana-artifact-status">' + escapeHtml(d._status || 'unknown') + '</div></div>';
+            }
+            var html = '<div class="nana-artifact-section"><h4>Provider Run</h4>'
+                     + nanaFixtureBadge(d.artifact_status);
+            html += nanaStatusRow('provider', d.provider);
+            html += nanaStatusRow('llm_called', d.llm_called);
+            html += nanaStatusRow('provider_run_type', d.provider_run_type);
+            html += nanaStatusRow('artifact_status', d.artifact_status);
+            html += nanaStatusRow('canonical_status', d.canonical_status);
+            var refs = Array.isArray(d.canonical_refs) ? d.canonical_refs.length + ' ref(s)' : '—';
+            html += nanaStatusRow('canonical_refs', refs);
+            // raw_answer and simulated_answer are NEVER rendered
+            html += '</div>';
+            return html;
+        }
+
+        function renderNanaCouncilSection(d) {
+            if (!d || d._status !== 'ok') {
+                return '<div class="nana-artifact-section"><h4>Council</h4>'
+                     + '<div class="nana-artifact-status">' + escapeHtml(d._status || 'unknown') + '</div></div>';
+            }
+            var html = '<div class="nana-artifact-section"><h4>Council</h4>'
+                     + nanaFixtureBadge(d.artifact_status);
+            html += nanaStatusRow('consensus_status', d.consensus_status);
+            html += nanaStatusRow('hallucination_risk', d.hallucination_risk);
+            html += nanaStatusRow('citation_agreement', d.citation_agreement_score);
+            html += nanaStatusRow('llm_called', d.llm_called);
+            var cands = Array.isArray(d.candidates) ? d.candidates.length + ' candidate(s)' : '—';
+            html += nanaStatusRow('candidates', cands);
+            html += '</div>';
+            return html;
+        }
+
+        function renderNanaValidationSection(d) {
+            if (!d || d._status !== 'ok') {
+                return '<div class="nana-artifact-section"><h4>Answer Validation</h4>'
+                     + '<div class="nana-artifact-status">' + escapeHtml(d._status || 'unknown') + '</div></div>';
+            }
+            var html = '<div class="nana-artifact-section"><h4>Answer Validation</h4>'
+                     + nanaFixtureBadge(d.artifact_status);
+            html += nanaStatusRow('gate_decision', d.gate_decision);
+            html += nanaStatusRow('display_allowed', d.display_allowed);
+            html += nanaStatusRow('validation_status', d.answer_validation_status);
+            html += nanaStatusRow('artifact_status', d.artifact_status);
+            var unknownCount = Array.isArray(d.unknown_refs_found) ? d.unknown_refs_found.length : '—';
+            html += nanaStatusRow('unknown_refs_found', unknownCount);
+            if (d.checks && typeof d.checks === 'object') {
+                Object.keys(d.checks).forEach(function(k) {
+                    html += nanaStatusRow(k, d.checks[k] ? '✓' : '✗');
+                });
+            }
+            // Gate: never show answer text
+            html += '<div class="nana-answer-gate">Answer: [not displayed]</div>';
+            html += '</div>';
+            return html;
+        }
+
+        async function renderNanaPreview(nanaSection, conceptArtifacts, manifestMeta) {
+            // Determine which provider artifact to use
+            var providerRelPath = conceptArtifacts.provider_mock || conceptArtifacts.provider_none || null;
+            var councilRelPath  = conceptArtifacts.council || null;
+            var valRelPath      = conceptArtifacts.answer_validation || null;
+
+            var results = await Promise.all([
+                providerRelPath ? fetchNanaArtifact(providerRelPath) : Promise.resolve({ _status: 'missing' }),
+                councilRelPath  ? fetchNanaArtifact(councilRelPath)  : Promise.resolve({ _status: 'missing' }),
+                valRelPath      ? fetchNanaArtifact(valRelPath)       : Promise.resolve({ _status: 'missing' })
+            ]);
+
+            var providerData = results[0];
+            var councilData  = results[1];
+            var valData      = results[2];
+
+            var previewHtml =
+                '<details class="nana-preview-block">'
+              + '<summary>NANA Artifact Preview</summary>'
+              + renderNanaProviderSection(providerData)
+              + renderNanaCouncilSection(councilData)
+              + renderNanaValidationSection(valData)
+              + '</details>';
+
+            // Append preview to existing nanaSection content
+            nanaSection.insertAdjacentHTML('beforeend', previewHtml);
+        }
 
         async function loadNanaManifest() {
             // Resolve relative to current page — safe for any deploy base path.
@@ -482,7 +695,10 @@
                 }
                 nanaManifest = data;
                 nanaManifestStatus = 'available';
-                console.info('[NANA] manifest loaded. Concepts:', Object.keys(data.artifacts_by_concept));
+                // Wave 2c.4e — derive NANA asset base for secondary artifact resolution
+                nanaAssetBaseUrl = new URL('./', manifestUrl).toString();
+                console.info('[NANA] manifest loaded. Base:', nanaAssetBaseUrl,
+                    '| Concepts:', Object.keys(data.artifacts_by_concept));
                 return data;
             } catch (err) {
                 // Network error, CORS, file:// protocol, etc.
@@ -739,7 +955,7 @@
             document.getElementById('panel-progress').innerHTML =
                 `<span class="studied-badge ${isStudied ? 'done' : ''}" onclick="toggleStudied('${node.key}')">${btnLabel}</span>`;
 
-            // ── NANA STATIC PANEL (Wave 2c.4d) ──────────────────────────────────
+            // ── NANA STATIC PANEL (Wave 2c.4d + 2c.4e) ────────────────────────────
             const nanaSection = document.getElementById('panel-nana');
             if (nanaSection) {
                 nanaSection.innerHTML = '';
@@ -751,29 +967,28 @@
                     if (conceptArtifacts) {
                         const artifactStatus  = nanaManifest.artifact_status  || '—';
                         const providerRunType = nanaManifest.provider_run_type || '—';
-                        const displayAllowed  = nanaManifest.display_allowed;
                         const artifactKeys    = Object.keys(conceptArtifacts);
 
-                        if (displayAllowed === false) {
-                            nanaSection.innerHTML =
-                                '<div class="nana-panel-block">'
-                              + '<span class="nana-label">🧠 NANA</span> '
-                              + 'Artifact present but not display-enabled.'
-                              + '</div>';
-                        } else {
-                            nanaSection.innerHTML =
-                                '<div class="nana-panel-block">'
-                              + '<span class="nana-label">🧠 NANA static artifacts available</span>'
-                              + '<div class="nana-meta">'
-                              + '<span>Concept: <code>' + conceptId + '</code></span>'
-                              + '<span>Status: <code>' + artifactStatus + '</code></span>'
-                              + '<span>Provider: <code>' + providerRunType + '</code></span>'
-                              + '</div>'
-                              + '<div class="nana-keys">' + artifactKeys.map(function(k) {
-                                  return '<span class="nana-key-pill">' + k + '</span>';
-                              }).join('') + '</div>'
-                              + '</div>';
-                        }
+                        // Base manifest summary block (always shown)
+                        nanaSection.innerHTML =
+                            '<div class="nana-panel-block">'
+                          + '<span class="nana-label">🧠 NANA static artifacts available</span>'
+                          + nanaFixtureBadge(artifactStatus)
+                          + '<div class="nana-meta">'
+                          + '<span>Concept: <code>' + escapeHtml(conceptId) + '</code></span>'
+                          + '<span>Status: <code>' + escapeHtml(artifactStatus) + '</code></span>'
+                          + '<span>Provider: <code>' + escapeHtml(providerRunType) + '</code></span>'
+                          + '</div>'
+                          + '<div class="nana-keys">' + artifactKeys.map(function(k) {
+                              return '<span class="nana-key-pill">' + escapeHtml(k) + '</span>';
+                          }).join('') + '</div>'
+                          + '</div>';
+
+                        // Wave 2c.4e — async secondary artifact preview (non-blocking)
+                        renderNanaPreview(nanaSection, conceptArtifacts, {
+                            artifact_status: artifactStatus,
+                            provider_run_type: providerRunType
+                        }).catch(function() { /* silent */ });
                     }
                 }
             }
